@@ -177,6 +177,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Management\Controllers\PageController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -313,8 +314,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Management\Controllers\" />
     <Folder Include="Areas\Management\Models\" />
+    <Folder Include="Areas\Management\Views\Page\" />
     <Folder Include="Areas\Management\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
