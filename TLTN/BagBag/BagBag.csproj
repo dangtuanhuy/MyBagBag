@@ -177,6 +177,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Management\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Management\Controllers\PageController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Models\Branch.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CatagoryMetaData.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
@@ -969,6 +971,11 @@
     <Content Include="Content\User\images\logo.psd" />
     <Content Include="Content\User\images\Thumbs.db" />
     <Content Include="Areas\Management\Views\Page\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Management\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Management\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Categories\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
