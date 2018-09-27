@@ -1,0 +1,36 @@
+﻿@model BagBag.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
+}
+
+<h2 class="text-center">Thông Tin Danh Mục</h2>
+<a href="@Url.Action("Index","Categories")" class="btn btn-info">Quản Lý</a>
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryDetails)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "Categories", new { id = Model.CategoryId })" class="btn btn-success">Chỉnh Sửa</a>
+</p>
+
