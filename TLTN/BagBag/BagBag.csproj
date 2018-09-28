@@ -218,6 +218,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeMetaData.cs" />
     <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Models\ImgNew.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
@@ -240,6 +241,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyBagBag.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewMetaData.cs" />
     <Compile Include="Models\News.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
@@ -252,12 +254,15 @@
     <Compile Include="Models\PaymentMethod.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaymentMethodMetaData.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductMetaData.cs" />
     <Compile Include="Models\Promotion.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PromotionMetaData.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
