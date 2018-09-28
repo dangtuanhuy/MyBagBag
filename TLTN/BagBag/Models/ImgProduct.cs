@@ -14,8 +14,8 @@ namespace BagBag.Models
     
     public partial class ImgProduct
     {
-        public int ImgId { get; set; }
-        public string ImgProduct1 { get; set; }
+        public int ImgProductId { get; set; }
+        public string Img_Product { get; set; }
         public byte SortImg { get; set; }
         public Nullable<int> ProductId { get; set; }
     

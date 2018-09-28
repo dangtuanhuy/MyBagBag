@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyBagBagModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyBagBagModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="About">
           <Key>
             <PropertyRef Name="AboutId" />
@@ -89,19 +89,19 @@
         </EntityType>
         <EntityType Name="ImgNews">
           <Key>
-            <PropertyRef Name="ImgNew" />
+            <PropertyRef Name="ImgNewId" />
           </Key>
-          <Property Name="ImgNew" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NewsImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImgNewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="News_Img" Type="nvarchar" MaxLength="50" />
           <Property Name="SortNews" Type="tinyint" Nullable="false" />
           <Property Name="NewsId" Type="int" />
         </EntityType>
         <EntityType Name="ImgProduct">
           <Key>
-            <PropertyRef Name="ImgId" />
+            <PropertyRef Name="ImgProductId" />
           </Key>
-          <Property Name="ImgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ImgProduct" Type="nvarchar" MaxLength="150" />
+          <Property Name="ImgProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Img_Product" Type="nvarchar" MaxLength="150" />
           <Property Name="SortImg" Type="tinyint" Nullable="false" />
           <Property Name="ProductId" Type="int" />
         </EntityType>
@@ -480,11 +480,89 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyBagBagModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyBagBagEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abouts" EntityType="MyBagBagModel.About" />
+          <EntitySet Name="Branches" EntityType="MyBagBagModel.Branch" />
+          <EntitySet Name="Categories" EntityType="MyBagBagModel.Category" />
+          <EntitySet Name="Contacts" EntityType="MyBagBagModel.Contact" />
+          <EntitySet Name="Customers" EntityType="MyBagBagModel.Customer" />
+          <EntitySet Name="Deliveries" EntityType="MyBagBagModel.Delivery" />
+          <EntitySet Name="Employees" EntityType="MyBagBagModel.Employee" />
+          <EntitySet Name="News" EntityType="MyBagBagModel.News" />
+          <EntitySet Name="Orders" EntityType="MyBagBagModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="MyBagBagModel.OrderDetail" />
+          <EntitySet Name="PaymentMethods" EntityType="MyBagBagModel.PaymentMethod" />
+          <EntitySet Name="Products" EntityType="MyBagBagModel.Product" />
+          <EntitySet Name="Promotions" EntityType="MyBagBagModel.Promotion" />
+          <EntitySet Name="Roles" EntityType="MyBagBagModel.Role" />
+          <EntitySet Name="Suppliers" EntityType="MyBagBagModel.Supplier" />
+          <AssociationSet Name="FK_About_Employee" Association="MyBagBagModel.FK_About_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="About" EntitySet="Abouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Employee" Association="MyBagBagModel.FK_Branch_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="MyBagBagModel.FK_Products_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Role" Association="MyBagBagModel.FK_Customer_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="MyBagBagModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Employee" Association="MyBagBagModel.FK_Delivery_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="MyBagBagModel.FK_Employee_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Employee" Association="MyBagBagModel.FK_News_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_PaymentMethod" Association="MyBagBagModel.FK_Order_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="MyBagBagModel.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Products" Association="MyBagBagModel.FK_OrderDetails_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Promotion" Association="MyBagBagModel.FK_Products_Promotion">
+            <End Role="Promotion" EntitySet="Promotions" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Supplier" Association="MyBagBagModel.FK_Products_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="ImgNews" EntityType="MyBagBagModel.ImgNew" />
+          <EntitySet Name="ImgProducts" EntityType="MyBagBagModel.ImgProduct" />
+          <AssociationSet Name="FK_ImgNews_News" Association="MyBagBagModel.FK_ImgNews_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgNew" EntitySet="ImgNews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgProducts_Products" Association="MyBagBagModel.FK_ImgProducts_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ImgProduct" EntitySet="ImgProducts" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="About">
           <Key>
             <PropertyRef Name="AboutId" />
@@ -494,7 +572,7 @@
           <Property Name="AboutImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AboutDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_About_Employee" FromRole="About" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="MyBagBagModel.FK_About_Employee" FromRole="About" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Branch">
           <Key>
@@ -504,23 +582,23 @@
           <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BranchDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Branch_Employee" FromRole="Branch" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="MyBagBagModel.FK_Branch_Employee" FromRole="Branch" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CategoryDetails" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Category" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="MyBagBagModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="ContactId" />
           </Key>
           <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -534,9 +612,9 @@
           <Key>
             <PropertyRef Name="CustomerCode" />
           </Key>
-          <Property Name="CustomerCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CustomerPass" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CustomerFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPass" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerFullName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="ContactCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="CustomerAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="CustomerRegion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -544,8 +622,8 @@
           <Property Name="CustomerPhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="CustomerFax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
+          <NavigationProperty Name="Orders" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <EntityType Name="Delivery">
           <Key>
@@ -556,47 +634,27 @@
           <Property Name="ImgDelivery" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="MyBagBagModel.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeCode" />
           </Key>
-          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EmployeePass" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeePass" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Precision="3" />
           <Property Name="EmployeImg" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Abouts" Relationship="Self.FK_About_Employee" FromRole="Employee" ToRole="About" />
-          <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
-          <NavigationProperty Name="Deliveries" Relationship="Self.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
-          <NavigationProperty Name="News" Relationship="Self.FK_News_Employee" FromRole="Employee" ToRole="News" />
-        </EntityType>
-        <EntityType Name="ImgNew">
-          <Key>
-            <PropertyRef Name="ImgNew1" />
-          </Key>
-          <Property Name="ImgNew1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NewsImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SortNews" Type="Byte" Nullable="false" />
-          <Property Name="NewsId" Type="Int32" />
-          <NavigationProperty Name="News" Relationship="Self.FK_ImgNews_News" FromRole="ImgNews" ToRole="News" />
-        </EntityType>
-        <EntityType Name="ImgProduct">
-          <Key>
-            <PropertyRef Name="ImgId" />
-          </Key>
-          <Property Name="ImgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImgProduct1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="SortImg" Type="Byte" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Products" />
+          <NavigationProperty Name="Abouts" Relationship="MyBagBagModel.FK_About_Employee" FromRole="Employee" ToRole="About" />
+          <NavigationProperty Name="Branches" Relationship="MyBagBagModel.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
+          <NavigationProperty Name="Deliveries" Relationship="MyBagBagModel.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
+          <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="News" Relationship="MyBagBagModel.FK_News_Employee" FromRole="Employee" ToRole="News" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -608,8 +666,8 @@
           <Property Name="NewsBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NewsDate" Type="DateTime" Precision="0" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_News_Employee" FromRole="News" ToRole="Employee" />
-          <NavigationProperty Name="ImgNews" Relationship="Self.FK_ImgNews_News" FromRole="News" ToRole="ImgNews" />
+          <NavigationProperty Name="Employee" Relationship="MyBagBagModel.FK_News_Employee" FromRole="News" ToRole="Employee" />
+          <NavigationProperty Name="ImgNews" Relationship="MyBagBagModel.FK_ImgNews_News" FromRole="News" ToRole="ImgNew" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -622,9 +680,9 @@
           <Property Name="OrderAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="PaymentMethod" Type="Int32" />
           <Property Name="PaymentOnline" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-          <NavigationProperty Name="PaymentMethod1" Relationship="Self.FK_Order_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetails" />
+          <NavigationProperty Name="Customer" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="PaymentMethod1" Relationship="MyBagBagModel.FK_Order_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
+          <NavigationProperty Name="OrderDetails" Relationship="MyBagBagModel.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -635,8 +693,8 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="SoldPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Quantity" Type="Int16" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
+          <NavigationProperty Name="Order" Relationship="MyBagBagModel.FK_OrderDetails_Order" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="MyBagBagModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -644,7 +702,7 @@
           </Key>
           <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PaymentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_PaymentMethod" FromRole="PaymentMethod" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="MyBagBagModel.FK_Order_PaymentMethod" FromRole="PaymentMethod" ToRole="Order" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -660,11 +718,11 @@
           <Property Name="SupplierId" Type="Int32" />
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="PromotionId" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
-          <NavigationProperty Name="ImgProducts" Relationship="Self.FK_ImgProducts_Products" FromRole="Products" ToRole="ImgProduct" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
-          <NavigationProperty Name="Promotion" Relationship="Self.FK_Products_Promotion" FromRole="Products" ToRole="Promotion" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK_Products_Supplier" FromRole="Products" ToRole="Supplier" />
+          <NavigationProperty Name="Category" Relationship="MyBagBagModel.FK_Products_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="OrderDetails" Relationship="MyBagBagModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="Promotion" Relationship="MyBagBagModel.FK_Products_Promotion" FromRole="Product" ToRole="Promotion" />
+          <NavigationProperty Name="Supplier" Relationship="MyBagBagModel.FK_Products_Supplier" FromRole="Product" ToRole="Supplier" />
+          <NavigationProperty Name="ImgProducts" Relationship="MyBagBagModel.FK_ImgProducts_Products" FromRole="Product" ToRole="ImgProduct" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -677,37 +735,37 @@
           <Property Name="PromotionStatus" Type="Boolean" />
           <Property Name="PromotionOpen" Type="DateTime" Precision="0" />
           <Property Name="PromotionClose" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Promotion" FromRole="Promotion" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="MyBagBagModel.FK_Products_Promotion" FromRole="Promotion" ToRole="Product" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="RoleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Role" FromRole="Role" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Customers" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Role" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="MyBagBagModel.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="SupplierId" />
           </Key>
           <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ContactTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Supplier" FromRole="Supplier" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="MyBagBagModel.FK_Products_Supplier" FromRole="Supplier" ToRole="Product" />
         </EntityType>
         <Association Name="FK_About_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="About" Type="Self.About" Multiplicity="*" />
+          <End Type="MyBagBagModel.About" Role="About" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeCode" />
@@ -718,10 +776,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Branch_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <End Type="MyBagBagModel.Branch" Role="Branch" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeCode" />
@@ -732,24 +790,24 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Category" Role="Category" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryId" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customer_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Role" Role="Role" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <End Type="MyBagBagModel.Customer" Role="Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="Id" />
@@ -760,10 +818,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Customer" Role="Customer" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="MyBagBagModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustomerCode" />
@@ -774,10 +832,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Delivery_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <End Type="MyBagBagModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeCode" />
@@ -788,10 +846,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Role" Role="Role" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="Id" />
@@ -802,10 +860,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_News_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <End Type="MyBagBagModel.News" Role="News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeCode" />
@@ -815,39 +873,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ImgNews_News">
-          <End Role="News" Type="Self.News" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ImgNews" Type="Self.ImgNew" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="News">
-              <PropertyRef Name="NewsId" />
-            </Principal>
-            <Dependent Role="ImgNews">
-              <PropertyRef Name="NewsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ImgProducts_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ImgProduct" Type="Self.ImgProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ImgProduct">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Order_PaymentMethod">
-          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1">
+          <End Type="MyBagBagModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="MyBagBagModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentMethod">
               <PropertyRef Name="PaymentId" />
@@ -858,138 +888,107 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetails_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <End Type="MyBagBagModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="MyBagBagModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderId" />
             </Principal>
-            <Dependent Role="OrderDetails">
+            <Dependent Role="OrderDetail">
               <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetails_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="1">
+          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <End Type="MyBagBagModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Products">
+            <Principal Role="Product">
               <PropertyRef Name="ProductId" />
             </Principal>
-            <Dependent Role="OrderDetails">
+            <Dependent Role="OrderDetail">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Promotion">
-          <End Role="Promotion" Type="Self.Promotion" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Promotion" Role="Promotion" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Promotion">
               <PropertyRef Name="PromotionId" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="PromotionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
+          <End Type="MyBagBagModel.Supplier" Role="Supplier" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="SupplierId" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="SupplierId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MyBagBagEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Abouts" EntityType="Self.About" />
-          <EntitySet Name="Branches" EntityType="Self.Branch" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="Contacts" EntityType="Self.Contact" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="ImgNews" EntityType="Self.ImgNew" />
-          <EntitySet Name="ImgProducts" EntityType="Self.ImgProduct" />
-          <EntitySet Name="News" EntityType="Self.News" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
-          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
-          <AssociationSet Name="FK_About_Employee" Association="Self.FK_About_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="About" EntitySet="Abouts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Branch_Employee" Association="Self.FK_Branch_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Branch" EntitySet="Branches" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Customer_Role" Association="Self.FK_Customer_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Delivery_Employee" Association="Self.FK_Delivery_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Delivery" EntitySet="Deliveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_News_Employee" Association="Self.FK_News_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="News" EntitySet="News" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ImgNews_News" Association="Self.FK_ImgNews_News">
-            <End Role="News" EntitySet="News" />
-            <End Role="ImgNews" EntitySet="ImgNews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ImgProducts_Products" Association="Self.FK_ImgProducts_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="ImgProduct" EntitySet="ImgProducts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_PaymentMethod" Association="Self.FK_Order_PaymentMethod">
-            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Promotion" Association="Self.FK_Products_Promotion">
-            <End Role="Promotion" EntitySet="Promotions" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Supplier" Association="Self.FK_Products_Supplier">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityType Name="ImgNew">
+          <Key>
+            <PropertyRef Name="ImgNewId" />
+          </Key>
+          <Property Name="ImgNewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="News_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortNews" Type="Byte" Nullable="false" />
+          <Property Name="NewsId" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="MyBagBagModel.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
+        </EntityType>
+        <EntityType Name="ImgProduct">
+          <Key>
+            <PropertyRef Name="ImgProductId" />
+          </Key>
+          <Property Name="ImgProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Img_Product" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SortImg" Type="Byte" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="MyBagBagModel.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_ImgNews_News">
+          <End Type="MyBagBagModel.News" Role="News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.ImgNew" Role="ImgNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsId" />
+            </Principal>
+            <Dependent Role="ImgNew">
+              <PropertyRef Name="NewsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgProducts_Products">
+          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.ImgProduct" Role="ImgProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ImgProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -999,204 +998,204 @@
           <EntitySetMapping Name="Abouts">
             <EntityTypeMapping TypeName="MyBagBagModel.About">
               <MappingFragment StoreEntitySet="About">
-                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
-                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
-                <ScalarProperty Name="AboutImg" ColumnName="AboutImg" />
-                <ScalarProperty Name="AboutDetails" ColumnName="AboutDetails" />
                 <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="AboutDetails" ColumnName="AboutDetails" />
+                <ScalarProperty Name="AboutImg" ColumnName="AboutImg" />
+                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="MyBagBagModel.Branch">
               <MappingFragment StoreEntitySet="Branch">
-                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="BranchDetails" ColumnName="BranchDetails" />
                 <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="BranchDetails" ColumnName="BranchDetails" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="MyBagBagModel.Category">
               <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryDetails" ColumnName="CategoryDetails" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="MyBagBagModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Region" ColumnName="Region" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="ContactsTitle" ColumnName="ContactsTitle" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="ContactsTitle" ColumnName="ContactsTitle" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="MyBagBagModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-                <ScalarProperty Name="CustomerPass" ColumnName="CustomerPass" />
-                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
-                <ScalarProperty Name="ContactCompany" ColumnName="ContactCompany" />
-                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
-                <ScalarProperty Name="CustomerRegion" ColumnName="CustomerRegion" />
-                <ScalarProperty Name="CustomerPostalCode" ColumnName="CustomerPostalCode" />
-                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
-                <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerPostalCode" ColumnName="CustomerPostalCode" />
+                <ScalarProperty Name="CustomerRegion" ColumnName="CustomerRegion" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="ContactCompany" ColumnName="ContactCompany" />
+                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+                <ScalarProperty Name="CustomerPass" ColumnName="CustomerPass" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Deliveries">
             <EntityTypeMapping TypeName="MyBagBagModel.Delivery">
               <MappingFragment StoreEntitySet="Delivery">
-                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
-                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
-                <ScalarProperty Name="ImgDelivery" ColumnName="ImgDelivery" />
-                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
-                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
                 <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
+                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
+                <ScalarProperty Name="ImgDelivery" ColumnName="ImgDelivery" />
+                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="MyBagBagModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-                <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="EmployeImg" ColumnName="EmployeImg" />
-                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
-                <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImgNews">
-            <EntityTypeMapping TypeName="MyBagBagModel.ImgNew">
-              <MappingFragment StoreEntitySet="ImgNews">
-                <ScalarProperty Name="ImgNew1" ColumnName="ImgNew" />
-                <ScalarProperty Name="NewsImg" ColumnName="NewsImg" />
-                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
-                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImgProducts">
-            <EntityTypeMapping TypeName="MyBagBagModel.ImgProduct">
-              <MappingFragment StoreEntitySet="ImgProduct">
-                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
-                <ScalarProperty Name="ImgProduct1" ColumnName="ImgProduct" />
-                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+                <ScalarProperty Name="EmployeImg" ColumnName="EmployeImg" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="MyBagBagModel.News">
               <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
-                <ScalarProperty Name="NewTitles" ColumnName="NewTitles" />
-                <ScalarProperty Name="NewsDetails" ColumnName="NewsDetails" />
-                <ScalarProperty Name="NewsBy" ColumnName="NewsBy" />
-                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
                 <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="NewsBy" ColumnName="NewsBy" />
+                <ScalarProperty Name="NewsDetails" ColumnName="NewsDetails" />
+                <ScalarProperty Name="NewTitles" ColumnName="NewTitles" />
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="MyBagBagModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
-                <ScalarProperty Name="OrderAddress" ColumnName="OrderAddress" />
-                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
                 <ScalarProperty Name="PaymentOnline" ColumnName="PaymentOnline" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="OrderAddress" ColumnName="OrderAddress" />
+                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="MyBagBagModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="MyBagBagModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
                 <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="MyBagBagModel.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
-                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
-                <ScalarProperty Name="ProductUpdate" ColumnName="ProductUpdate" />
-                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
-                <ScalarProperty Name="ProductSold" ColumnName="ProductSold" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="ProductSold" ColumnName="ProductSold" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="ProductUpdate" ColumnName="ProductUpdate" />
+                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Promotions">
             <EntityTypeMapping TypeName="MyBagBagModel.Promotion">
               <MappingFragment StoreEntitySet="Promotion">
-                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
-                <ScalarProperty Name="PromotionName" ColumnName="PromotionName" />
-                <ScalarProperty Name="PromotionDetails" ColumnName="PromotionDetails" />
-                <ScalarProperty Name="PromotionDiscount" ColumnName="PromotionDiscount" />
-                <ScalarProperty Name="PromotionStatus" ColumnName="PromotionStatus" />
-                <ScalarProperty Name="PromotionOpen" ColumnName="PromotionOpen" />
                 <ScalarProperty Name="PromotionClose" ColumnName="PromotionClose" />
+                <ScalarProperty Name="PromotionOpen" ColumnName="PromotionOpen" />
+                <ScalarProperty Name="PromotionStatus" ColumnName="PromotionStatus" />
+                <ScalarProperty Name="PromotionDiscount" ColumnName="PromotionDiscount" />
+                <ScalarProperty Name="PromotionDetails" ColumnName="PromotionDetails" />
+                <ScalarProperty Name="PromotionName" ColumnName="PromotionName" />
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="MyBagBagModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="MyBagBagModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
-                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgNews">
+            <EntityTypeMapping TypeName="MyBagBagModel.ImgNew">
+              <MappingFragment StoreEntitySet="ImgNews">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
+                <ScalarProperty Name="News_Img" ColumnName="News_Img" />
+                <ScalarProperty Name="ImgNewId" ColumnName="ImgNewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgProducts">
+            <EntityTypeMapping TypeName="MyBagBagModel.ImgProduct">
+              <MappingFragment StoreEntitySet="ImgProduct">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
+                <ScalarProperty Name="Img_Product" ColumnName="Img_Product" />
+                <ScalarProperty Name="ImgProductId" ColumnName="ImgProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

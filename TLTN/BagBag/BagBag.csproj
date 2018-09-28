@@ -199,9 +199,11 @@
     <Compile Include="Models\About.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AboutMetaData.cs" />
     <Compile Include="Models\Branch.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchMetaData.cs" />
     <Compile Include="Models\CatagoryMetaData.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
@@ -215,6 +217,7 @@
     <Compile Include="Models\Delivery.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeliveryMetaData.cs" />
     <Compile Include="Models\Employee.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
