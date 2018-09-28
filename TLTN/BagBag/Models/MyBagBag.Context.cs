@@ -32,8 +32,6 @@ namespace BagBag.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Delivery> Deliveries { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<ImgNew> ImgNews { get; set; }
-        public virtual DbSet<ImgProduct> ImgProducts { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
@@ -42,5 +40,7 @@ namespace BagBag.Models
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<ImgNew> ImgNews { get; set; }
+        public virtual DbSet<ImgProduct> ImgProducts { get; set; }
     }
 }

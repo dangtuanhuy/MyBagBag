@@ -5,10 +5,11 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-center">Thông Tin Chi Nhánh</h2>
+<a href="@Url.Action("Index","Branches")" class="btn btn-info">Quản Lý</a>
 
 <div>
-    <h4>Branch</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,12 +33,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Employee.EmployeePass)
+            @Html.DisplayFor(model => model.Employee.EmployeeCode)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BranchId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "Branches", new { id = Model.BranchId })" class="btn btn-success">Chỉnh Sửa</a>
 </p>

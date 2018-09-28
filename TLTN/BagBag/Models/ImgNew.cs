@@ -14,8 +14,8 @@ namespace BagBag.Models
     
     public partial class ImgNew
     {
-        public int ImgNew1 { get; set; }
-        public string NewsImg { get; set; }
+        public int ImgNewId { get; set; }
+        public string News_Img { get; set; }
         public byte SortNews { get; set; }
         public Nullable<int> NewsId { get; set; }
     
