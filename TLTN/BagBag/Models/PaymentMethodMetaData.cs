@@ -11,6 +11,7 @@ namespace BagBag.Models
         {
             [Display(Name ="Hình Thức Thanh Toán")]
             public int PaymentId { get; set; }
+
             [Display(Name = "Hình Thức Thanh Toán")]
             [Required(ErrorMessage ="Vui lòng điền hình thức thanh toán")]
             public string PaymentName { get; set; }

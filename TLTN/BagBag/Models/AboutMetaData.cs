@@ -12,11 +12,16 @@ namespace BagBag.Models
         internal sealed class AboutMetaData
         {
             public int AboutId { get; set; }
+
+
             [Display(Name = "Về Chúng Tôi")]
             [Required(ErrorMessage ="Vui lòng điền vào đây")]
             public string AboutUs { get; set; }
+
             [Display(Name = "Hình Mô Tả")]
             public string AboutImg { get; set; }
+
+
             [Required(ErrorMessage = "Vui lòng điền vào đây")]
             [Display(Name = "Chi Tiết")]
             public string AboutDetails { get; set; }

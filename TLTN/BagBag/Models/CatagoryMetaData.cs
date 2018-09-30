@@ -9,8 +9,11 @@ namespace BagBag.Models
             public int CategoryId { get; set; }
 
             [Display(Name ="Danh Mục Sản Phẩm")]
+            [Required(ErrorMessage = "Không được rỗng")]
             public string CategoryName { get; set; }
+
             [Display(Name = "Mô tả")]
+            [Required(ErrorMessage = "Không được rỗng")]
             [DataType(DataType.MultilineText)]
             public string CategoryDetails { get; set; }
         }
