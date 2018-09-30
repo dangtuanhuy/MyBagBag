@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 namespace BagBag.Models
 {
+    [MetadataType(typeof(Delivery.DeliveryMetaData))]
    public partial class Delivery
     {
         internal sealed class DeliveryMetaData
