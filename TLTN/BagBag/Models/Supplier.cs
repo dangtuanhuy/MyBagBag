@@ -28,8 +28,8 @@ namespace BagBag.Models
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string HomePage { get; set; }
-        public Nullable<bool> Status_Supplier { get; set; }
-        public Nullable<System.DateTime> Create_Supplier { get; set; }
+        public bool Status_Supplier { get; set; }
+        public System.DateTime Create_Supplier { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

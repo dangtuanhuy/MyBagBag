@@ -23,7 +23,7 @@ namespace BagBag.Models
         public string Phone { get; set; }
         public string ContactsTitle { get; set; }
         public string Fax { get; set; }
-        public Nullable<bool> Status { get; set; }
-        public Nullable<System.DateTime> Create_Contact { get; set; }
+        public bool Status { get; set; }
+        public System.DateTime Create_Contact { get; set; }
     }
 }

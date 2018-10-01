@@ -27,11 +27,14 @@ namespace BagBag.Models
         public string EmployeePass { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public Nullable<bool> EmployeeGender { get; set; }
         public Nullable<System.DateTime> BirthDate { get; set; }
         public string EmployeImg { get; set; }
         public string EmployeeEmail { get; set; }
         public string EmployeeAddress { get; set; }
         public Nullable<int> RoleId { get; set; }
+        public System.DateTime Create_Emp { get; set; }
+        public bool Status_Emp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<About> Abouts { get; set; }
