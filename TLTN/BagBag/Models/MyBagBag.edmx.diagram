@@ -5,21 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b380a8ec35d44d1b8796ac9ff5d1c0a2" Name="Diagram1" ZoomLevel="99">
-        <EntityTypeShape EntityType="MyBagBagModel.About" Width="1.5" PointX="6" PointY="22.25" />
-        <EntityTypeShape EntityType="MyBagBagModel.Branch" Width="1.5" PointX="5.75" PointY="16.25" />
-        <EntityTypeShape EntityType="MyBagBagModel.Category" Width="1.5" PointX="0.5" PointY="0.625" />
+        <EntityTypeShape EntityType="MyBagBagModel.About" Width="1.5" PointX="6" PointY="22.5" />
+        <EntityTypeShape EntityType="MyBagBagModel.Branch" Width="1.5" PointX="6" PointY="19.75" />
+        <EntityTypeShape EntityType="MyBagBagModel.Category" Width="1.5" PointX="0.75" PointY="11.125" />
         <EntityTypeShape EntityType="MyBagBagModel.Contact" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MyBagBagModel.Customer" Width="1.5" PointX="3.75" PointY="9.125" />
-        <EntityTypeShape EntityType="MyBagBagModel.Delivery" Width="1.5" PointX="6" PointY="25.25" />
-        <EntityTypeShape EntityType="MyBagBagModel.Employee" Width="1.5" PointX="3.75" PointY="23.375" />
-        <EntityTypeShape EntityType="MyBagBagModel.News" Width="1.5" PointX="6" PointY="28.375" />
-        <EntityTypeShape EntityType="MyBagBagModel.Order" Width="1.5" PointX="3.75" PointY="5" />
-        <EntityTypeShape EntityType="MyBagBagModel.OrderDetail" Width="1.5" PointX="4.5" PointY="0.625" />
-        <EntityTypeShape EntityType="MyBagBagModel.PaymentMethod" Width="1.5" PointX="5.75" PointY="7.5" />
-        <EntityTypeShape EntityType="MyBagBagModel.Product" Width="1.5" PointX="2.5" PointY="0.5" />
-        <EntityTypeShape EntityType="MyBagBagModel.Promotion" Width="1.5" PointX="1.875" PointY="6.875" />
-        <EntityTypeShape EntityType="MyBagBagModel.Role" Width="1.5" PointX="1.5" PointY="21.25" />
-        <EntityTypeShape EntityType="MyBagBagModel.Supplier" Width="1.5" PointX="0.5" PointY="3.625" />
+        <EntityTypeShape EntityType="MyBagBagModel.Customer" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="MyBagBagModel.Delivery" Width="1.5" PointX="6" PointY="28.75" />
+        <EntityTypeShape EntityType="MyBagBagModel.Employee" Width="1.5" PointX="3.75" PointY="23.5" />
+        <EntityTypeShape EntityType="MyBagBagModel.ImgNew" Width="1.5" PointX="8.25" PointY="25.75" />
+        <EntityTypeShape EntityType="MyBagBagModel.ImgProduct" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="MyBagBagModel.News" Width="1.5" PointX="6" PointY="25.375" />
+        <EntityTypeShape EntityType="MyBagBagModel.Order" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="MyBagBagModel.OrderDetail" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="MyBagBagModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="14.375" />
+        <EntityTypeShape EntityType="MyBagBagModel.Product" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="MyBagBagModel.Promotion" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="MyBagBagModel.Role" Width="1.5" PointX="1.5" PointY="21.375" />
+        <EntityTypeShape EntityType="MyBagBagModel.Supplier" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="MyBagBagModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.75" />
         <AssociationConnector Association="MyBagBagModel.FK_About_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_Branch_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Category" />
@@ -28,15 +31,13 @@
         <AssociationConnector Association="MyBagBagModel.FK_Delivery_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_Employee_Role" />
         <AssociationConnector Association="MyBagBagModel.FK_News_Employee" />
+        <AssociationConnector Association="MyBagBagModel.FK_ImgNews_News" />
+        <AssociationConnector Association="MyBagBagModel.FK_ImgProducts_Products" />
         <AssociationConnector Association="MyBagBagModel.FK_Order_PaymentMethod" />
         <AssociationConnector Association="MyBagBagModel.FK_OrderDetails_Order" />
         <AssociationConnector Association="MyBagBagModel.FK_OrderDetails_Products" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Promotion" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Supplier" />
-        <EntityTypeShape EntityType="MyBagBagModel.ImgNew" Width="1.5" PointX="8.25" PointY="28.625" />
-        <EntityTypeShape EntityType="MyBagBagModel.ImgProduct" Width="1.5" PointX="4.75" PointY="13.5" />
-        <AssociationConnector Association="MyBagBagModel.FK_ImgNews_News" />
-        <AssociationConnector Association="MyBagBagModel.FK_ImgProducts_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

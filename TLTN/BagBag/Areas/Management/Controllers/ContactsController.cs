@@ -46,7 +46,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContactId,CompanyName,ContactName,Address,Region,PostalCode,Phone,ContactsTitle,Fax,Status")] Contact contact)
+        public ActionResult Create([Bind(Include = "ContactId,CompanyName,ContactName,Address,Region,PostalCode,Phone,ContactsTitle,Fax,Status,Create_Contact")] Contact contact)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContactId,CompanyName,ContactName,Address,Region,PostalCode,Phone,ContactsTitle,Fax,Status")] Contact contact)
+        public ActionResult Edit([Bind(Include = "ContactId,CompanyName,ContactName,Address,Region,PostalCode,Phone,ContactsTitle,Fax,Status,Create_Contact")] Contact contact)
         {
             if (ModelState.IsValid)
             {

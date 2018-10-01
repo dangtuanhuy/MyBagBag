@@ -23,6 +23,8 @@ namespace BagBag.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDetails { get; set; }
+        public Nullable<bool> Status_Category { get; set; }
+        public Nullable<System.DateTime> Create_Category { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

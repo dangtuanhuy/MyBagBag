@@ -31,6 +31,8 @@
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="CategoryDetails" Type="nvarchar" MaxLength="550" />
+          <Property Name="Status_Category" Type="bit" />
+          <Property Name="Create_Category" Type="date" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -46,6 +48,7 @@
           <Property Name="ContactsTitle" Type="ntext" />
           <Property Name="Fax" Type="nvarchar" MaxLength="24" />
           <Property Name="Status" Type="bit" />
+          <Property Name="Create_Contact" Type="date" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -127,6 +130,7 @@
           <Property Name="OrderAddress" Type="nvarchar" MaxLength="60" />
           <Property Name="PaymentMethod" Type="int" />
           <Property Name="PaymentOnline" Type="nvarchar" MaxLength="250" />
+          <Property Name="Order_Status" Type="bit" />
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
@@ -159,6 +163,7 @@
           <Property Name="SupplierId" Type="int" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="PromotionId" Type="int" />
+          <Property Name="Create_Product" Type="date" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -192,6 +197,18 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
           <Property Name="HomePage" Type="ntext" />
+          <Property Name="Status_Supplier" Type="bit" />
+          <Property Name="Create_Supplier" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_About_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
@@ -419,6 +436,7 @@
           <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_About_Employee" Association="Self.FK_About_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="About" EntitySet="About" />
@@ -492,6 +510,8 @@
           <EntitySet Name="Customers" EntityType="MyBagBagModel.Customer" />
           <EntitySet Name="Deliveries" EntityType="MyBagBagModel.Delivery" />
           <EntitySet Name="Employees" EntityType="MyBagBagModel.Employee" />
+          <EntitySet Name="ImgNews" EntityType="MyBagBagModel.ImgNew" />
+          <EntitySet Name="ImgProducts" EntityType="MyBagBagModel.ImgProduct" />
           <EntitySet Name="News" EntityType="MyBagBagModel.News" />
           <EntitySet Name="Orders" EntityType="MyBagBagModel.Order" />
           <EntitySet Name="OrderDetails" EntityType="MyBagBagModel.OrderDetail" />
@@ -500,6 +520,7 @@
           <EntitySet Name="Promotions" EntityType="MyBagBagModel.Promotion" />
           <EntitySet Name="Roles" EntityType="MyBagBagModel.Role" />
           <EntitySet Name="Suppliers" EntityType="MyBagBagModel.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="MyBagBagModel.sysdiagram" />
           <AssociationSet Name="FK_About_Employee" Association="MyBagBagModel.FK_About_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="About" EntitySet="Abouts" />
@@ -532,6 +553,14 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
+          <AssociationSet Name="FK_ImgNews_News" Association="MyBagBagModel.FK_ImgNews_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgNew" EntitySet="ImgNews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgProducts_Products" Association="MyBagBagModel.FK_ImgProducts_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ImgProduct" EntitySet="ImgProducts" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_PaymentMethod" Association="MyBagBagModel.FK_Order_PaymentMethod">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Order" EntitySet="Orders" />
@@ -551,16 +580,6 @@
           <AssociationSet Name="FK_Products_Supplier" Association="MyBagBagModel.FK_Products_Supplier">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <EntitySet Name="ImgNews" EntityType="MyBagBagModel.ImgNew" />
-          <EntitySet Name="ImgProducts" EntityType="MyBagBagModel.ImgProduct" />
-          <AssociationSet Name="FK_ImgNews_News" Association="MyBagBagModel.FK_ImgNews_News">
-            <End Role="News" EntitySet="News" />
-            <End Role="ImgNew" EntitySet="ImgNews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ImgProducts_Products" Association="MyBagBagModel.FK_ImgProducts_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ImgProduct" EntitySet="ImgProducts" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="About">
@@ -591,6 +610,8 @@
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CategoryDetails" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Status_Category" Type="Boolean" />
+          <Property Name="Create_Category" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Products" Relationship="MyBagBagModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Contact">
@@ -607,6 +628,7 @@
           <Property Name="ContactsTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
+          <Property Name="Create_Contact" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -656,6 +678,26 @@
           <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="News" Relationship="MyBagBagModel.FK_News_Employee" FromRole="Employee" ToRole="News" />
         </EntityType>
+        <EntityType Name="ImgNew">
+          <Key>
+            <PropertyRef Name="ImgNewId" />
+          </Key>
+          <Property Name="ImgNewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="News_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortNews" Type="Byte" Nullable="false" />
+          <Property Name="NewsId" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="MyBagBagModel.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
+        </EntityType>
+        <EntityType Name="ImgProduct">
+          <Key>
+            <PropertyRef Name="ImgProductId" />
+          </Key>
+          <Property Name="ImgProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Img_Product" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SortImg" Type="Byte" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="MyBagBagModel.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
+        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="NewsId" />
@@ -680,6 +722,7 @@
           <Property Name="OrderAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="PaymentMethod" Type="Int32" />
           <Property Name="PaymentOnline" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Status" Type="Boolean" />
           <NavigationProperty Name="Customer" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="PaymentMethod1" Relationship="MyBagBagModel.FK_Order_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
           <NavigationProperty Name="OrderDetails" Relationship="MyBagBagModel.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetail" />
@@ -718,11 +761,12 @@
           <Property Name="SupplierId" Type="Int32" />
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="PromotionId" Type="Int32" />
+          <Property Name="Create_Product" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Category" Relationship="MyBagBagModel.FK_Products_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ImgProducts" Relationship="MyBagBagModel.FK_ImgProducts_Products" FromRole="Product" ToRole="ImgProduct" />
           <NavigationProperty Name="OrderDetails" Relationship="MyBagBagModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="Promotion" Relationship="MyBagBagModel.FK_Products_Promotion" FromRole="Product" ToRole="Promotion" />
           <NavigationProperty Name="Supplier" Relationship="MyBagBagModel.FK_Products_Supplier" FromRole="Product" ToRole="Supplier" />
-          <NavigationProperty Name="ImgProducts" Relationship="MyBagBagModel.FK_ImgProducts_Products" FromRole="Product" ToRole="ImgProduct" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -759,7 +803,19 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status_Supplier" Type="Boolean" />
+          <Property Name="Create_Supplier" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Products" Relationship="MyBagBagModel.FK_Products_Supplier" FromRole="Supplier" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_About_Employee">
           <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="0..1">
@@ -873,6 +929,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ImgNews_News">
+          <End Type="MyBagBagModel.News" Role="News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.ImgNew" Role="ImgNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsId" />
+            </Principal>
+            <Dependent Role="ImgNew">
+              <PropertyRef Name="NewsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgProducts_Products">
+          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.ImgProduct" Role="ImgProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ImgProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_PaymentMethod">
           <End Type="MyBagBagModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -941,55 +1025,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ImgNew">
-          <Key>
-            <PropertyRef Name="ImgNewId" />
-          </Key>
-          <Property Name="ImgNewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="News_Img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SortNews" Type="Byte" Nullable="false" />
-          <Property Name="NewsId" Type="Int32" />
-          <NavigationProperty Name="News" Relationship="MyBagBagModel.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
-        </EntityType>
-        <EntityType Name="ImgProduct">
-          <Key>
-            <PropertyRef Name="ImgProductId" />
-          </Key>
-          <Property Name="ImgProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Img_Product" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="SortImg" Type="Byte" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="MyBagBagModel.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK_ImgNews_News">
-          <End Type="MyBagBagModel.News" Role="News" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MyBagBagModel.ImgNew" Role="ImgNew" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="News">
-              <PropertyRef Name="NewsId" />
-            </Principal>
-            <Dependent Role="ImgNew">
-              <PropertyRef Name="NewsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ImgProducts_Products">
-          <End Type="MyBagBagModel.Product" Role="Product" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MyBagBagModel.ImgProduct" Role="ImgProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ImgProduct">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1019,6 +1055,8 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="MyBagBagModel.Category">
               <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Create_Category" ColumnName="Create_Category" />
+                <ScalarProperty Name="Status_Category" ColumnName="Status_Category" />
                 <ScalarProperty Name="CategoryDetails" ColumnName="CategoryDetails" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
@@ -1028,6 +1066,7 @@
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="MyBagBagModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Create_Contact" ColumnName="Create_Contact" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="ContactsTitle" ColumnName="ContactsTitle" />
@@ -1084,6 +1123,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImgNews">
+            <EntityTypeMapping TypeName="MyBagBagModel.ImgNew">
+              <MappingFragment StoreEntitySet="ImgNews">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
+                <ScalarProperty Name="News_Img" ColumnName="News_Img" />
+                <ScalarProperty Name="ImgNewId" ColumnName="ImgNewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgProducts">
+            <EntityTypeMapping TypeName="MyBagBagModel.ImgProduct">
+              <MappingFragment StoreEntitySet="ImgProduct">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
+                <ScalarProperty Name="Img_Product" ColumnName="Img_Product" />
+                <ScalarProperty Name="ImgProductId" ColumnName="ImgProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="MyBagBagModel.News">
               <MappingFragment StoreEntitySet="News">
@@ -1099,6 +1158,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="MyBagBagModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
                 <ScalarProperty Name="PaymentOnline" ColumnName="PaymentOnline" />
                 <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
                 <ScalarProperty Name="OrderAddress" ColumnName="OrderAddress" />
@@ -1130,6 +1190,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="MyBagBagModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Create_Product" ColumnName="Create_Product" />
                 <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
@@ -1168,6 +1229,8 @@
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="MyBagBagModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Create_Supplier" ColumnName="Create_Supplier" />
+                <ScalarProperty Name="Status_Supplier" ColumnName="Status_Supplier" />
                 <ScalarProperty Name="HomePage" ColumnName="HomePage" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -1179,23 +1242,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ImgNews">
-            <EntityTypeMapping TypeName="MyBagBagModel.ImgNew">
-              <MappingFragment StoreEntitySet="ImgNews">
-                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
-                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
-                <ScalarProperty Name="News_Img" ColumnName="News_Img" />
-                <ScalarProperty Name="ImgNewId" ColumnName="ImgNewId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImgProducts">
-            <EntityTypeMapping TypeName="MyBagBagModel.ImgProduct">
-              <MappingFragment StoreEntitySet="ImgProduct">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
-                <ScalarProperty Name="Img_Product" ColumnName="Img_Product" />
-                <ScalarProperty Name="ImgProductId" ColumnName="ImgProductId" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MyBagBagModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -17,8 +17,8 @@ namespace BagBag.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
             this.ImgProducts = new HashSet<ImgProduct>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public int ProductId { get; set; }
@@ -31,13 +31,14 @@ namespace BagBag.Models
         public Nullable<int> SupplierId { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> PromotionId { get; set; }
+        public Nullable<System.DateTime> Create_Product { get; set; }
     
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImgProduct> ImgProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Promotion Promotion { get; set; }
         public virtual Supplier Supplier { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ImgProduct> ImgProducts { get; set; }
     }
 }

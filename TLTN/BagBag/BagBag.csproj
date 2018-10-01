@@ -274,6 +274,9 @@
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SupplierMetaData.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>MyBagBag.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1059,6 +1062,7 @@
     <Content Include="Areas\Management\Views\Customers\Edit.cshtml" />
     <Content Include="Areas\Management\Views\Customers\Index.cshtml" />
     <Content Include="Areas\Management\Views\Deliveries\UploadDelivery.cshtml" />
+    <Content Include="Areas\Management\Views\Abouts\UploadAbout.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
