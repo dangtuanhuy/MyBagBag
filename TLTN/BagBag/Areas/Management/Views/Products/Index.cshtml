@@ -65,6 +65,13 @@
                     @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
                 </td>
                 <td>
+                    <a href="@Url.Action("UploadProducts", "Products", new { id = item.ProductId})" class="btn btn-default">
+                        <i class="fa fa-image"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
                     <a href="@Url.Action("Edit", "Products", new { id = item.ProductId})" class="btn btn-success">
                         <i class="fa fa-pencil"></i>
                         <span>

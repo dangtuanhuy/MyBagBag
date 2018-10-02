@@ -1063,6 +1063,9 @@
     <Content Include="Areas\Management\Views\Employees\Details.cshtml" />
     <Content Include="Areas\Management\Views\Employees\Edit.cshtml" />
     <Content Include="Areas\Management\Views\Employees\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Employees\UploadEmp.cshtml" />
+    <Content Include="Areas\Management\Views\Products\UploadProducts.cshtml" />
+    <Content Include="Areas\Management\Views\News\UploadNews.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -53,6 +53,13 @@
                     @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
                 </td>
                 <td>
+                    <a href="@Url.Action("UploadNews", "News", new { id = item.NewsId})" class="btn btn-default">
+                        <i class="fa fa-image"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
                     <a href="@Url.Action("Edit", "News", new { id = item.NewsId})" class="btn btn-success">
                         <i class="fa fa-pencil"></i>
                         <span>

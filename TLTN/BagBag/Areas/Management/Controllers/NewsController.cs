@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -119,7 +120,77 @@ namespace BagBag.Areas.Management.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult UploadNews(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            // news = db.Products.Include(s => s.ImgProducts).SingleOrDefault(p => p.ProductId == id);
+            var news = db.News.Include(p => p.ImgNews).SingleOrDefault(s => s.NewsId == id);
+            if (news == null)
+            {
+                object Err = "Không Tìm Thấy Thông Tin";
+                return View("Error", Err);
+            }
+            return View(news);
+        }
+        [HttpPost]
+        public ActionResult UploadNews(int id, HttpPostedFileBase[] files)
+        {
+            byte max = 0;
+            var listImg = db.ImgNews.Where(p => p.NewsId == id).ToList();
+            if (listImg.Count > 0)
+                max = listImg.Max(p => p.SortNews);
+            var listFile = files.Where(p => p != null);
+            foreach (var f in listFile)
+            {
+                //Tạo một đối tượng
+                var img = new ImgNew();
+                img.NewsId = id;
+                img.News_Img = f.FileName;
+                img.SortNews = ++max;
+                db.ImgNews.Add(img);
+                var path = Server.MapPath("~/myImg/News/" + f.FileName);
+                f.SaveAs(path);
+            }
+            if (listFile.Any())
+                db.SaveChanges();
+            return RedirectToAction("UploadNews");
+        }
+        public ActionResult DeleteImg(int id, int? NewsId)
+        {
+            if (NewsId.HasValue)
+            {
+                try
+                {
+                    var img = db.ImgNews.Find(id);
+                    if (img == null)
+                        return RedirectToAction("Index");
+                    db.ImgNews.Remove(img);
+                    var fileName = img.News_Img;
+                    var path = Server.MapPath("~/myImg/News/" + fileName);
+                    var file = new FileInfo(path);
 
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                    }
+
+                    db.SaveChanges();
+                    return RedirectToAction("UploadNews");
+                }
+
+                catch (Exception ex)
+                {
+                    object mess = "Không thể xóa IMG " + ex.Message;
+                    return View("Error", mess);
+                }
+            }
+
+            TempData["Success_Mess"] = "<script>alert('Delete Success')</script>";
+            return Redirect("~/myImg/News/" + NewsId);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

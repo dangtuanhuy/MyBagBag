@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,10 +49,11 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId,Create_Emp")] Employee employee)
         {
             if (ModelState.IsValid)
             {
+                employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +84,11 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId,Create_Emp")] Employee employee)
         {
             if (ModelState.IsValid)
             {
+                employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -119,7 +122,57 @@ namespace BagBag.Areas.Management.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult UploadEmp(string id)
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadEmp(HttpPostedFileBase file, string id)
+        {
+            var defaultFolderToSaveFile = "~/myImg/Emp/" + id + "/";
 
+            // Kiểm tra nếu chưa tồn tại thư mục trên thì tạo mới. 
+            if (Directory.Exists(Server.MapPath(defaultFolderToSaveFile)) == false)
+            {
+                Directory.CreateDirectory(Server.MapPath(defaultFolderToSaveFile));
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Kiểm tra nếu người dùng có chọn file
+                if (file != null && file.ContentLength > 0)
+                {
+                    // Lấy tên file
+                    var fileName = Path.GetFileName(file.FileName);
+                    if (fileName != null)
+                    {
+                        var path = Path.Combine(Server.MapPath(defaultFolderToSaveFile), fileName);
+
+                        var i = 1;
+                        while (System.IO.File.Exists(path))
+                        {
+                            path = Path.Combine(Server.MapPath(defaultFolderToSaveFile), i + "_" + fileName);
+                            i++;
+                        }
+
+                        // Upload file lên Server ở thư mục ~/myImg/
+                        file.SaveAs(path);
+
+                        // Lấy imageurl để lưu vào database, có định dạng "~/myImg/Vehicle/Id/ten_file.jpg"
+                        var imageUrl = defaultFolderToSaveFile + fileName;
+
+                        // Lưu thông tin image url vào product
+                        var Emp = db.Employees.Find(id);
+                        Emp.EmployeImg = imageUrl;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

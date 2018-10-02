@@ -1,12 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "UploadAbout";
+    ViewBag.Title = "UploadEmp";
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center">Upload Hình Nhân Viên</h2>
+<h2 class="text-center">Về Chúng Tôi</h2>
 
-@using (Html.BeginForm("UploadAbout", "Abouts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadEmp", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-inline text-center">
@@ -22,6 +22,4 @@
     </div>
 
 }
-
-
 
