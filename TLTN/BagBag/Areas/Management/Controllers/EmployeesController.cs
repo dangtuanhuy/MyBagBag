@@ -48,7 +48,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId")] Employee employee)
         {
             if (ModelState.IsValid)
             {

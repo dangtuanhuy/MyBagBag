@@ -222,6 +222,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeMetaData.cs" />
     <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Models\ImgNew.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
