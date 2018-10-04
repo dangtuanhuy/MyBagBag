@@ -16,7 +16,6 @@ namespace BagBag.Models
             [Display(Name ="Giao Hàng")]
             public string DeliveryTitle { get; set; }
 
-       
             [Display(Name = "Phương tiện")]
             public string ImgDelivery { get; set; }
 

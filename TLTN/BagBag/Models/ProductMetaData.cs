@@ -26,7 +26,7 @@ namespace BagBag.Models
 
             [Display(Name = "Ngày Nhận Hàng")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [DataType(DataType.DateTime, ErrorMessage = "Dữ liệu phải là kiểu ngày tháng")]
+            [DataType(DataType.Date, ErrorMessage = "Dữ liệu phải là kiểu ngày tháng")]
             [Required(ErrorMessage = "Vui lòng điền ngày nhận hàng")]
             public Nullable<System.DateTime> ProductUpdate { get; set; }
 
