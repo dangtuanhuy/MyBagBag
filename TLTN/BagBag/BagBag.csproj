@@ -193,6 +193,7 @@
     <Compile Include="Areas\Management\Controllers\RolesController.cs" />
     <Compile Include="Areas\Management\Controllers\SuppliersController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
+    <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1066,6 +1067,11 @@
     <Content Include="Areas\Management\Views\Employees\UploadEmp.cshtml" />
     <Content Include="Areas\Management\Views\Products\UploadProducts.cshtml" />
     <Content Include="Areas\Management\Views\News\UploadNews.cshtml" />
+    <Content Include="Areas\Management\Views\Page\_statusPromotion.cshtml" />
+    <Content Include="Areas\Management\Views\Page\_countProducts.cshtml" />
+    <Content Include="Areas\Management\Views\Page\_countContacts.cshtml" />
+    <Content Include="Areas\Management\Views\Page\_countCart.cshtml" />
+    <Content Include="Areas\Management\Views\Shared\_FooterPage.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1097,7 +1103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Management\Models\" />
     <Folder Include="Content\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="myImg\About\" />
     <Folder Include="myImg\BagBag\" />

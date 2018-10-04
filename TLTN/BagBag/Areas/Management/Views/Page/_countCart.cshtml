@@ -1,0 +1,9 @@
+﻿@using BagBag.Models;
+@{
+    IQueryable<Order> countCarts = ViewBag.countCarts as IQueryable<Order>;
+}
+<div class="info-box green-bg">
+    <i class="fa fa-shopping-cart"></i>
+    <div class="count"> @ViewBag.countCarts</div>
+    <div class="title"><a href="#">Đơn Hàng</a></div>
+</div>
