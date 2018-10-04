@@ -16,7 +16,7 @@ namespace BagBag.Models
             [Display(Name ="Giao Hàng")]
             public string DeliveryTitle { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
+       
             [Display(Name = "Phương tiện")]
             public string ImgDelivery { get; set; }
 
