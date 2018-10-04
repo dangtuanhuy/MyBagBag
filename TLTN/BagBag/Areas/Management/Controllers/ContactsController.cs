@@ -10,7 +10,7 @@ using BagBag.Models;
 
 namespace BagBag.Areas.Management.Controllers
 {
-    public class ContactsController : Controller
+    public class ContactsController : BaseController
     {
         private MyBagBagEntities db = new MyBagBagEntities();
 

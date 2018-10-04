@@ -10,7 +10,7 @@ namespace BagBag.Areas.Management.Controllers
     {
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            var session = Session["username"];
+            var session = Session["employee"];
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new

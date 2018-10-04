@@ -10,7 +10,7 @@ using BagBag.Models;
 
 namespace BagBag.Areas.Management.Controllers
 {
-    public class PromotionsController : Controller
+    public class PromotionsController : BaseController
     {
         private MyBagBagEntities db = new MyBagBagEntities();
 

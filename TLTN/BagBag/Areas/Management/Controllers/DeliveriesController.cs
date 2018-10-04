@@ -11,7 +11,7 @@ using BagBag.Models;
 
 namespace BagBag.Areas.Management.Controllers
 {
-    public class DeliveriesController : Controller
+    public class DeliveriesController : BaseController
     {
         private MyBagBagEntities db = new MyBagBagEntities();
 
@@ -40,7 +40,7 @@ namespace BagBag.Areas.Management.Controllers
         // GET: Management/Deliveries/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass");
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeliveryId,DeliveryTitle,ImgDelivery,DeliveryDetails,DeliveryQuestion,EmployeeCode")] Delivery delivery)
+        public ActionResult Create([Bind(Include = "DeliveryId,DeliveryTitle,DeliveryDetails,DeliveryQuestion,EmployeeCode")] Delivery delivery)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeliveryId,DeliveryTitle,ImgDelivery,DeliveryDetails,DeliveryQuestion,EmployeeCode")] Delivery delivery)
+        public ActionResult Edit([Bind(Include = "DeliveryId,DeliveryTitle,DeliveryDetails,DeliveryQuestion,EmployeeCode")] Delivery delivery)
         {
             if (ModelState.IsValid)
             {

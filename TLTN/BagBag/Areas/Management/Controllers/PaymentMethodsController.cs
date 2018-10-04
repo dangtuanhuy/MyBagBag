@@ -10,7 +10,7 @@ using BagBag.Models;
 
 namespace BagBag.Areas.Management.Controllers
 {
-    public class PaymentMethodsController : Controller
+    public class PaymentMethodsController : BaseController
     {
         private MyBagBagEntities db = new MyBagBagEntities();
 

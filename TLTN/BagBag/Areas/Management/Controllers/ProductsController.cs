@@ -11,7 +11,7 @@ using BagBag.Models;
 
 namespace BagBag.Areas.Management.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private MyBagBagEntities db = new MyBagBagEntities();
 

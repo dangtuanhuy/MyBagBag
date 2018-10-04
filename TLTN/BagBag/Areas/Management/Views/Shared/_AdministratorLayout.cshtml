@@ -73,7 +73,7 @@
                             <span class="profile-ava">
                                 <img alt="" src="~/Content/Admin/img/avatar1_small.jpg">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">@Session["employee"]</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -85,7 +85,7 @@
                                 <a href="#"><i class="icon_mail_alt"></i>Update Password</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="@Url.Action("Login","Login")"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
 
                         </ul>

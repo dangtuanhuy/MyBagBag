@@ -185,6 +185,7 @@
     <Compile Include="Areas\Management\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Management\Controllers\DeliveriesController.cs" />
     <Compile Include="Areas\Management\Controllers\EmployeesController.cs" />
+    <Compile Include="Areas\Management\Controllers\LoginController.cs" />
     <Compile Include="Areas\Management\Controllers\NewsController.cs" />
     <Compile Include="Areas\Management\Controllers\PageController.cs" />
     <Compile Include="Areas\Management\Controllers\PaymentMethodsController.cs" />
@@ -1072,6 +1073,8 @@
     <Content Include="Areas\Management\Views\Page\_countContacts.cshtml" />
     <Content Include="Areas\Management\Views\Page\_countCart.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_FooterPage.cshtml" />
+    <Content Include="Areas\Management\Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Areas\Management\Views\Login\Login.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BagBag.Areas.Management.Controllers
 {
-    public class PageController : Controller
+    public class PageController : BaseController
     {
         private MyBagBagEntities db = new MyBagBagEntities();
         // GET: Management/Page
