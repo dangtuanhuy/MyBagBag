@@ -196,6 +196,8 @@
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RegistersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1103,6 +1105,9 @@
     <Content Include="Views\Home\_TravelProducts.cshtml" />
     <Content Include="Views\Home\_CrosspocketProducts.cshtml" />
     <Content Include="Views\Home\_BackpackutilityProducts.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Registers\Register.cshtml" />
+    <Content Include="Views\Registers\UpdateAcount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
