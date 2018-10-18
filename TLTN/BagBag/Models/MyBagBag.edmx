@@ -57,7 +57,7 @@
           <Property Name="CustomerCode" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="CustomerPass" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="CustomerFullName" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="CustomerGender" Type="bit" />
+          <Property Name="CustomerGender" Type="int" />
           <Property Name="ContactCompany" Type="nvarchar" MaxLength="30" />
           <Property Name="CustomerAddress" Type="nvarchar" MaxLength="60" />
           <Property Name="CustomerRegion" Type="nvarchar" MaxLength="15" />
@@ -641,7 +641,7 @@
           <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="CustomerPass" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="CustomerFullName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerGender" Type="Boolean" />
+          <Property Name="CustomerGender" Type="Int32" />
           <Property Name="ContactCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="CustomerAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="CustomerRegion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -1033,7 +1033,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
