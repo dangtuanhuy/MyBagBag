@@ -7,6 +7,9 @@
 @{
     IQueryable<Product> listProducts1 = ViewBag.ListProduct1 as IQueryable<Product>;
     IQueryable<Product> listProducts2 = ViewBag.ListProduct2 as IQueryable<Product>;
+    IQueryable<Product> listProducts3 = ViewBag.ListProduct3 as IQueryable<Product>;
+    IQueryable<Product> listProducts4 = ViewBag.ListProduct4 as IQueryable<Product>;
+    IQueryable<Product> listProducts5 = ViewBag.ListProduct5 as IQueryable<Product>;
 }
 <!-- start slider -->
 <div id="fwslider">
@@ -51,191 +54,18 @@
             <div class="cont span_2_of_3">
                 <h2 class="head">Featured Products</h2>
                 <div class="top-box">
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic.jpg" alt="" />
-                                </div>
-                                <div class="sale-box"><span class="on_sale title_shop">New</span></div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic1.jpg" alt="" />
-                                </div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic2.jpg" alt="" />
-                                </div>
-                                <div class="sale-box1"><span class="on_sale title_shop">Sale</span></div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="reducedfrom">$66.00</span>
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @Html.Partial("~/Views/Home/_TravelProducts.cshtml", listProducts5)
                     <div class="clear"></div>
                 </div>
+
                 <div class="top-box">
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic3.jpg" alt="" />
-                                </div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic4.jpg" alt="" />
-                                </div>
-                                <div class="sale-box"><span class="on_sale title_shop">New</span></div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic5.jpg" alt="" />
-                                </div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @Html.Partial("~/Views/Home/_CrosspocketProducts.cshtml", listProducts4)
+
+                    
                     <div class="clear"></div>
                 </div>
                 <div class="top-box1">
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic6.jpg" alt="" />
-                                </div>
-                                <div class="sale-box"><span class="on_sale title_shop">New</span></div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic7.jpg" alt="" />
-                                </div>
-                                <div class="sale-box1"><span class="on_sale title_shop">Sale</span></div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="reducedfrom">$66.00</span>
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <a href="#">
-                            <div class="inner_content clearfix">
-                                <div class="product_image">
-                                    <img src="~/Content/User/images/pic8.jpg" alt="" />
-                                </div>
-                                <div class="sale-box"><span class="on_sale title_shop">New</span></div>
-                                <div class="price">
-                                    <div class="cart-left">
-                                        <p class="title">Lorem Ipsum simply</p>
-                                        <div class="price1">
-                                            <span class="actual">$12.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-right"> </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @Html.Partial("~/Views/Home/_BackpackutilityProducts.cshtml", listProducts3)
                     <div class="clear"></div>
                 </div>
                 <h2 class="head">Staff Pick</h2>
