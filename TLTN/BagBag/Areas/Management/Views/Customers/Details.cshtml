@@ -1,30 +1,31 @@
 ﻿@model BagBag.Models.Customer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-center">Thông Tin Khách Hàng</h2>
+<a href="@Url.Action("Index","Customers")" class="btn btn-info">Quản Lý</a>
 
 <div>
-    <h4>Customer</h4>
+    
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerPass)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerPass)
-        </dd>
-
-        <dt>
+              <dt>
             @Html.DisplayNameFor(model => model.CustomerFullName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CustomerFullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerGender)
         </dd>
 
         <dt>
@@ -75,17 +76,6 @@
             @Html.DisplayFor(model => model.CustomerFax)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Role.RoleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Role.RoleName)
-        </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerCode }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

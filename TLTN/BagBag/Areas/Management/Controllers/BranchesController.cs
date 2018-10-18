@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,8 +53,21 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Branches.Add(branch);
-                db.SaveChanges();
+                try
+                {
+                    db.Branches.Add(branch);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -86,8 +100,21 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(branch).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(branch).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", branch.EmployeeCode);
@@ -114,9 +141,18 @@ namespace BagBag.Areas.Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Branch branch = db.Branches.Find(id);
-            db.Branches.Remove(branch);
-            db.SaveChanges();
+            try
+            {
+                Branch branch = db.Branches.Find(id);
+                db.Branches.Remove(branch);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["msg1"] = "<script>alert('Can not Delete Record');</script>";
+                e.ToString();
+            }
             return RedirectToAction("Index");
         }
 

@@ -23,6 +23,7 @@ namespace BagBag.Models
         public string CustomerCode { get; set; }
         public string CustomerPass { get; set; }
         public string CustomerFullName { get; set; }
+        public Nullable<bool> CustomerGender { get; set; }
         public string ContactCompany { get; set; }
         public string CustomerAddress { get; set; }
         public string CustomerRegion { get; set; }

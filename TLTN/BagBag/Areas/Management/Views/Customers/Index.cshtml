@@ -1,82 +1,83 @@
 ﻿@model IEnumerable<BagBag.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Delete";
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">DANH MỤC KHÁCH HÀNG</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerPass)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerFullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactCompany)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerRegion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerPostalCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerFax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role.RoleName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerPass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerFullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactCompany)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerRegion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerPostalCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerFax)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role.RoleName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerCode }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerCode }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerCode })
-        </td>
-    </tr>
-}
+@Html.Raw(TempData["msg1"])
+<table class="table table-striped table-bordered" id="tablefillset">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerRegion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerPostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerFax)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerRegion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerFax)
+                </td>
+                <td>
 
+                    <a href="@Url.Action("Details", "Customers", new { id = item.CustomerCode })" class="btn btn-primary">
+                        <i class="fa fa-list-alt"></i>
+                        <span>
+
+                        </span>
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

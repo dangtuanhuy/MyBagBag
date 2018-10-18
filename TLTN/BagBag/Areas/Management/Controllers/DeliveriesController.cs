@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -53,8 +54,21 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Deliveries.Add(delivery);
-                db.SaveChanges();
+                try
+                {
+                    db.Deliveries.Add(delivery);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -87,11 +101,24 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(delivery).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(delivery).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", delivery.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", delivery.EmployeeCode);
             return View(delivery);
         }
 
@@ -116,8 +143,17 @@ namespace BagBag.Areas.Management.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Delivery delivery = db.Deliveries.Find(id);
-            db.Deliveries.Remove(delivery);
-            db.SaveChanges();
+            try
+            {
+                db.Deliveries.Remove(delivery);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["msg1"] = "<script>alert('Can not Delete Record');</script>";
+                e.ToString();
+            }
             return RedirectToAction("Index");
         }
         public ActionResult UploadDelivery(int id)

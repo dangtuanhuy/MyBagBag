@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,13 +50,26 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId,Create_Emp")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeeEmail,EmployeeAddress,RoleId,Create_Emp")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
-                db.Employees.Add(employee);
-                db.SaveChanges();
+                try
+                {
+                    employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
+                    db.Employees.Add(employee);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -84,13 +98,26 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeImg,EmployeeEmail,EmployeeAddress,RoleId,Create_Emp")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,EmployeeGender,FirstName,BirthDate,EmployeeEmail,EmployeeAddress,RoleId,Create_Emp")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
+                    db.Entry(employee).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "RoleName", employee.RoleId);
@@ -118,8 +145,17 @@ namespace BagBag.Areas.Management.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
-            db.SaveChanges();
+            try
+            {
+                db.Employees.Remove(employee);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["msg1"] = "<script>alert('Can not Delete Record');</script>";
+                e.ToString();
+            }
             return RedirectToAction("Index");
         }
         public ActionResult UploadEmp(string id)

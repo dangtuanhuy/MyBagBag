@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -40,7 +41,7 @@ namespace BagBag.Areas.Management.Controllers
         // GET: Management/Abouts/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass");
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode");
             return View();
         }
 
@@ -49,16 +50,29 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AboutId,AboutUs,AboutImg,AboutDetails,EmployeeCode")] About about)
+        public ActionResult Create([Bind(Include = "AboutId,AboutUs,AboutDetails,EmployeeCode")] About about)
         {
             if (ModelState.IsValid)
             {
-                db.Abouts.Add(about);
-                db.SaveChanges();
+                try
+                {
+                    db.Abouts.Add(about);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", about.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", about.EmployeeCode);
             return View(about);
         }
 
@@ -74,7 +88,7 @@ namespace BagBag.Areas.Management.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", about.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", about.EmployeeCode);
             return View(about);
         }
 
@@ -83,15 +97,28 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AboutId,AboutUs,AboutImg,AboutDetails,EmployeeCode")] About about)
+        public ActionResult Edit([Bind(Include = "AboutId,AboutUs,AboutDetails,EmployeeCode")] About about)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(about).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(about).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", about.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", about.EmployeeCode);
             return View(about);
         }
 
@@ -115,9 +142,18 @@ namespace BagBag.Areas.Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            About about = db.Abouts.Find(id);
-            db.Abouts.Remove(about);
-            db.SaveChanges();
+            try
+            {
+                About about = db.Abouts.Find(id);
+                db.Abouts.Remove(about);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["msg1"] = "<script>alert('Can not Delete Record');</script>";
+                e.ToString();
+            }
             return RedirectToAction("Index");
         }
         public ActionResult UploadAbout(int id)

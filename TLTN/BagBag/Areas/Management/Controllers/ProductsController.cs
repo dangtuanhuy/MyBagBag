@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -55,8 +56,23 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
+                try
+                {
+                    product.Create_Product = DateTime.Now;
+
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -93,8 +109,22 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(product).State = EntityState.Modified;
+                    product.Create_Product = DateTime.Now;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
@@ -124,8 +154,17 @@ namespace BagBag.Areas.Management.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
+            try
+            {
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["msg1"] = "<script>alert('Can not Delete Record');</script>";
+                e.ToString();
+            }
             return RedirectToAction("Index");
         }
         public ActionResult UploadProducts(int? id)

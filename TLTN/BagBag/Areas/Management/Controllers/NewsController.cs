@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -40,7 +41,7 @@ namespace BagBag.Areas.Management.Controllers
         // GET: Management/News/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass");
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode");
             return View();
         }
 
@@ -53,12 +54,25 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.News.Add(news);
-                db.SaveChanges();
+                try
+                {
+                    db.News.Add(news);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", news.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", news.EmployeeCode);
             return View(news);
         }
 
@@ -74,7 +88,7 @@ namespace BagBag.Areas.Management.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", news.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", news.EmployeeCode);
             return View(news);
         }
 
@@ -87,11 +101,24 @@ namespace BagBag.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(news).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(news).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", news.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeeCode", news.EmployeeCode);
             return View(news);
         }
 
@@ -115,9 +142,18 @@ namespace BagBag.Areas.Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            News news = db.News.Find(id);
-            db.News.Remove(news);
-            db.SaveChanges();
+            try
+            {
+                News news = db.News.Find(id);
+                db.News.Remove(news);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["msg1"] = "<script>alert('Can not Delete Record');</script>";
+                e.ToString();
+            }
             return RedirectToAction("Index");
         }
         public ActionResult UploadNews(int? id)
