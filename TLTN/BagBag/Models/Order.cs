@@ -25,6 +25,7 @@ namespace BagBag.Models
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> RequiredDate { get; set; }
         public string OrderAddress { get; set; }
+        public string OrderPhone { get; set; }
         public Nullable<int> PaymentMethod { get; set; }
         public string PaymentOnline { get; set; }
         public Nullable<bool> Order_Status { get; set; }

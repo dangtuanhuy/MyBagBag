@@ -195,6 +195,7 @@
     <Compile Include="Areas\Management\Controllers\SuppliersController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -210,6 +211,7 @@
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BranchMetaData.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CatagoryMetaData.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
@@ -1175,6 +1177,9 @@
     <Content Include="Views\Registers\UpdateAcount.cshtml" />
     <Content Include="Views\Registers\Success.cshtml" />
     <Content Include="Views\LoginUser\Login.cshtml" />
+    <Content Include="Views\Cart\XemGioHang.cshtml" />
+    <Content Include="Views\Cart\ShoppingPartial.cshtml" />
+    <Content Include="Views\Cart\ConfirmCheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

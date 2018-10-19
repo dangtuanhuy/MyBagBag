@@ -132,6 +132,7 @@
           <Property Name="OrderDate" Type="datetime" />
           <Property Name="RequiredDate" Type="datetime" />
           <Property Name="OrderAddress" Type="nvarchar" MaxLength="60" />
+          <Property Name="OrderPhone" Type="nvarchar" MaxLength="50" />
           <Property Name="PaymentMethod" Type="int" />
           <Property Name="PaymentOnline" Type="nvarchar" MaxLength="250" />
           <Property Name="Order_Status" Type="bit" />
@@ -144,7 +145,7 @@
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="SoldPrice" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Quantity" Type="smallint" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -728,6 +729,7 @@
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <Property Name="RequiredDate" Type="DateTime" Precision="3" />
           <Property Name="OrderAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="OrderPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PaymentMethod" Type="Int32" />
           <Property Name="PaymentOnline" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Order_Status" Type="Boolean" />
@@ -743,7 +745,7 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="SoldPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Quantity" Type="Int16" />
+          <Property Name="Quantity" Type="Int32" />
           <NavigationProperty Name="Order" Relationship="MyBagBagModel.FK_OrderDetails_Order" FromRole="OrderDetail" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="MyBagBagModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
@@ -1173,6 +1175,7 @@
                 <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
                 <ScalarProperty Name="PaymentOnline" ColumnName="PaymentOnline" />
                 <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="OrderPhone" ColumnName="OrderPhone" />
                 <ScalarProperty Name="OrderAddress" ColumnName="OrderAddress" />
                 <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
