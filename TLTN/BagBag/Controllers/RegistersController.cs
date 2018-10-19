@@ -20,12 +20,13 @@ namespace BagBag.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "CustomerCode,CustomerPass,CustomerFullName,CustomerGender,ContactCompany,CustomerAddress,CustomerRegion,CustomerPostalCode,CustomerPhone,CustomerFax,RoleId")] Customer customer)
+        public ActionResult Register([Bind(Include = "CustomerCode,CustomerPass,CustomerFullName,CustomerGender,CustomerAddress,CustomerRegion,CustomerPostalCode,CustomerPhone,CustomerFax,RoleId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    customer.CustomerGender = 1;
                     customer.RoleId = 3;
                     customer.CustomerPass = Encrypt.MD5_Encode(customer.CustomerPass);
                     db.Customers.Add(customer);
@@ -41,10 +42,10 @@ namespace BagBag.Controllers
                         }
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Success", "Registers");
             }
 
-            ViewBag.RoleId = new SelectList(db.Roles, "Id", "RoleName", customer.RoleId);
+  
             return View(customer);
         }
 
@@ -64,13 +65,14 @@ namespace BagBag.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateAcount([Bind(Include = "CustomerCode,CustomerPass,CustomerFullName,CustomerGender,ContactCompany,CustomerAddress,CustomerRegion,CustomerPostalCode,CustomerPhone,CustomerFax,RoleId")] Customer customer)
+        public ActionResult UpdateAcount([Bind(Include = "CustomerCode,CustomerPass,CustomerFullName,CustomerGender,CustomerAddress,CustomerRegion,CustomerPostalCode,CustomerPhone,CustomerFax,RoleId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     db.Entry(customer).State = EntityState.Modified;
+                    customer.CustomerGender = 1;
                     customer.RoleId = 3;
                     customer.CustomerPass = Encrypt.MD5_Encode(customer.CustomerPass);
                     db.SaveChanges();
@@ -89,6 +91,10 @@ namespace BagBag.Controllers
             }
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "RoleName", customer.RoleId);
             return View(customer);
+        }
+        public ActionResult Success()
+        {
+            return View();
         }
     }
 }

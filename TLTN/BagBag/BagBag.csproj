@@ -196,6 +196,7 @@
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,6 +220,7 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerMetaData.cs" />
     <Compile Include="Models\Delivery.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
@@ -234,6 +236,7 @@
     <Compile Include="Models\ImgProduct.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\MyBagBag.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1072,6 +1075,7 @@
     <Content Include="Areas\Management\Views\Customers\Details.cshtml" />
     <Content Include="Areas\Management\Views\Customers\Index.cshtml" />
     <Content Include="Areas\Management\Views\Contacts\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Customers\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1108,6 +1112,8 @@
     <Content Include="Views\Product\ProductDetails.cshtml" />
     <Content Include="Views\Registers\Register.cshtml" />
     <Content Include="Views\Registers\UpdateAcount.cshtml" />
+    <Content Include="Views\Registers\Success.cshtml" />
+    <Content Include="Views\LoginUser\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
