@@ -43,6 +43,28 @@ namespace BagBag.Controllers
             }
             return View("Login");
         }
+        public ActionResult LoginCart()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LoginCart(LoginUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = CheckRegister(model.CustomerCode, model.CustomerPass);
+                if (result)
+                {
+                    Session["username"] = model.CustomerCode;
+                    return RedirectToAction("ConfirmCheckOut", "Cart");
+                }
+                else
+                {
+                    return RedirectToAction("LoginCart");
+                }
+            }
+            return View("LoginCart");
+        }
         public ActionResult LogOff()
         {
             Session["username"] = null;

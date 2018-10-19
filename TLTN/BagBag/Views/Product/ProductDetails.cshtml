@@ -28,9 +28,8 @@
                     <h3 class="m_3">@Model.ProductName</h3>
                     <p class="m_5">@string.Format("{0:#,##0 $}", @Model.ProductSold)</p>
                     <div class="btn_form">
-                        <form>
-                            <input type="submit" value="buy" title="">
-                        </form>
+                        <a href="@Url.Action("ThemGioHang", "Cart", new { @ProductId = Model.ProductId, strUrl = Request.Url.ToString()})" class="add-cart item_add">ADD TO CART</a>
+                        <a class="add-cart item_add" href="@Url.Action("Index", "Home")">Continue shopping</a>
                     </div>
                     <span class="m_link"><a href="#">login to save in wishlist</a> </span>
                     <p class="m_text2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit </p>

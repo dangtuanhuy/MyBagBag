@@ -1180,6 +1180,7 @@
     <Content Include="Views\Cart\XemGioHang.cshtml" />
     <Content Include="Views\Cart\ShoppingPartial.cshtml" />
     <Content Include="Views\Cart\ConfirmCheckOut.cshtml" />
+    <Content Include="Views\LoginUser\LoginCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

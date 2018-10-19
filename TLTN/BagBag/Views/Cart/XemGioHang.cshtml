@@ -8,9 +8,15 @@
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
 @if (Model == null || Model.Count == 0)
 {
-
-    <p>Giỏ hàng rỗng</p>
-
+    <section class="section-paddings">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>Giỏ hàng rỗng</p>
+                </div>
+            </div>
+        </div>
+    </section>
 }
 else
 {
@@ -68,28 +74,28 @@ else
         </div>
     </section>
 }
-    <section class="section-paddings">
-        <div class="container">
-            <div class="row">
-                <div class=" col-md-12">
-                    @using (Html.BeginForm("ConfirmCheckOut_Post", "Cart"))
+<section class="section-paddings">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-12">
+                @using (Html.BeginForm("ConfirmCheckOut_Post", "Cart"))
+                {
+                    if (@Session["username"] == null)
                     {
-                        if (@Session["username"] == null)
-                        {
-                            <a class="btn btn-danger" href="@Url.Action("LoginCart", "LoginUser")">Check Out</a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-danger" href="@Url.Action("ConfirmCheckOut", "Cart")">Check Out</a>
-                        }
-                        <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Continue shopping</a>
-
+                        <a class="btn btn-danger" href="@Url.Action("LoginCart", "LoginUser")">Check Out</a>
                     }
+                    else
+                    {
+                        <a class="btn btn-danger" href="@Url.Action("ConfirmCheckOut", "Cart")">Check Out</a>
+                    }
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Continue shopping</a>
 
-                </div>
+                }
 
-                </div>
             </div>
-        </section>
+
+        </div>
+    </div>
+</section>
 
 
