@@ -87,7 +87,7 @@ namespace BagBag.Controllers
                         }
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "RoleName", customer.RoleId);
             return View(customer);

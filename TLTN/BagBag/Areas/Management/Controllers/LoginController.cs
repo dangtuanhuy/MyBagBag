@@ -53,7 +53,7 @@ namespace BagBag.Areas.Management.Controllers
         public ActionResult LogOff()
         {
             Session["employee"] = null;
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

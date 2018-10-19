@@ -32,10 +32,24 @@
             </div>
             <div class="cssmenu">
                 <ul>
+
                     
-                    <li><a href="#">Wishlist</a></li> |
-                    <li><a href="#">Checkout</a></li> |
-                    <li><a href="#">Log In</a></li> |
+                    @if (@Session["username"] == null)
+                    {
+                        <li><a href="@Url.Action("Login", "LoginUser")">Log In</a></li>
+                    }
+                    
+                    else
+                    {
+                        <li>Hi,@Session["username"] </li>
+
+                        <li><a href="@Url.Action("UpdateAcount","Registers",new { id = @Session["username"] })">Update Account</a></li>
+
+                        <li><a href="#">Giỏ Hàng</a></li>
+
+                        <li><a href="@Url.Action("LogOff","LoginUser")">Log Out</a></li>
+
+                    }
                     <li><a href="@Url.Action("Register","Registers")">Sign Up</a></li>
                 </ul>
             </div>
