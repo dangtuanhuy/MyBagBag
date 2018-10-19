@@ -123,11 +123,13 @@ namespace BagBag.Areas.Management.Controllers
 
         public ActionResult ConfirmCheckOut()
         {
+            ViewBag.PaymentMethod = new SelectList(db.PaymentMethods, "PaymentId", "PaymentName");
             return View();
+
         }
 
         [HttpPost]
-        public ActionResult ConfirmCheckOut([Bind(Include = "OrderAddress,Phone")] Order order)
+        public ActionResult ConfirmCheckOut([Bind(Include = "OrderAddress,OrderPhone,PaymentMethod")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -158,11 +160,12 @@ namespace BagBag.Areas.Management.Controllers
                 }
                 db.SaveChanges();
                 Session["GioHang"] = null;
-                return RedirectToAction("Susses", "Cart");
+                return RedirectToAction("Succees", "Cart");
             }
+            ViewBag.PaymentMethod = new SelectList(db.PaymentMethods, "PaymentId", "PaymentName", order.PaymentMethod);
             return View();
         }
-        public ActionResult Susses()
+        public ActionResult Succees()
         {
             return View();
         }

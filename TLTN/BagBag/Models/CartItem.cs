@@ -15,6 +15,7 @@ namespace BagBag.Models
         public List<ImgProduct> ImgPro { get; set; }
         public String ProductName { get; set; }
         public Decimal Total { get; set; }
+        public Nullable<int> PaymentMethod { get; set; }
         public CartItem(int ProductId)
         {
             using (MyBagBagEntities db = new MyBagBagEntities())

@@ -187,6 +187,7 @@
     <Compile Include="Areas\Management\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Management\Controllers\LoginController.cs" />
     <Compile Include="Areas\Management\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Management\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Management\Controllers\PageController.cs" />
     <Compile Include="Areas\Management\Controllers\PaymentMethodsController.cs" />
     <Compile Include="Areas\Management\Controllers\ProductsController.cs" />
@@ -1139,6 +1140,11 @@
     <Content Include="Areas\Management\Views\Contacts\Delete.cshtml" />
     <Content Include="Areas\Management\Views\Customers\Create.cshtml" />
     <Content Include="Areas\Management\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Management\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Management\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Orders\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1181,6 +1187,7 @@
     <Content Include="Views\Cart\ShoppingPartial.cshtml" />
     <Content Include="Views\Cart\ConfirmCheckOut.cshtml" />
     <Content Include="Views\LoginUser\LoginCart.cshtml" />
+    <Content Include="Views\Cart\Succees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
