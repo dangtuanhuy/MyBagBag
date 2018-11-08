@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="MyBagBagModel.ImgNew" Width="1.5" PointX="8.25" PointY="28.75" />
         <EntityTypeShape EntityType="MyBagBagModel.ImgProduct" Width="1.5" PointX="5.25" PointY="5.5" />
         <EntityTypeShape EntityType="MyBagBagModel.News" Width="1.5" PointX="6" PointY="28.5" />
-        <EntityTypeShape EntityType="MyBagBagModel.Order" Width="1.5" PointX="3" PointY="14.875" />
         <EntityTypeShape EntityType="MyBagBagModel.OrderDetail" Width="1.5" PointX="5.25" PointY="2.375" />
         <EntityTypeShape EntityType="MyBagBagModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="22.875" />
         <EntityTypeShape EntityType="MyBagBagModel.Product" Width="1.5" PointX="3" PointY="1.5" />
@@ -27,17 +26,18 @@
         <AssociationConnector Association="MyBagBagModel.FK_Branch_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Category" />
         <AssociationConnector Association="MyBagBagModel.FK_Customer_Role" />
-        <AssociationConnector Association="MyBagBagModel.FK_Order_Customer" />
         <AssociationConnector Association="MyBagBagModel.FK_Delivery_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_Employee_Role" />
         <AssociationConnector Association="MyBagBagModel.FK_News_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_ImgNews_News" />
         <AssociationConnector Association="MyBagBagModel.FK_ImgProducts_Products" />
-        <AssociationConnector Association="MyBagBagModel.FK_Order_PaymentMethod" />
-        <AssociationConnector Association="MyBagBagModel.FK_OrderDetails_Order" />
         <AssociationConnector Association="MyBagBagModel.FK_OrderDetails_Products" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Promotion" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Supplier" />
+        <EntityTypeShape EntityType="MyBagBagModel.Order" Width="1.5" PointX="4" PointY="15.375" />
+        <AssociationConnector Association="MyBagBagModel.FK_Order_Customer" />
+        <AssociationConnector Association="MyBagBagModel.FK_Order_PaymentMethod" />
+        <AssociationConnector Association="MyBagBagModel.FK_OrderDetails_Order" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
