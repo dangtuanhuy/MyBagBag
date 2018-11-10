@@ -57,6 +57,7 @@ namespace BagBag.Areas.Management.Controllers
                 try
                 {
                     employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
+                    employee.Create_Emp = DateTime.Now;
                     db.Employees.Add(employee);
                     db.SaveChanges();
                 }
@@ -105,6 +106,7 @@ namespace BagBag.Areas.Management.Controllers
                 try
                 {
                     employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
+                    employee.Create_Emp = DateTime.Now;
                     db.Entry(employee).State = EntityState.Modified;
                     db.SaveChanges();
                 }

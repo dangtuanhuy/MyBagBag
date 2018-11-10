@@ -4,7 +4,7 @@
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
-<h3>Bạn có muốn có xóa nhân viên này?</h3>
+<h3>Are you sure delete?</h3>
 <div>
 
     <hr />
@@ -79,8 +79,8 @@
         @Html.AntiForgeryToken()
 
     <div class="form-actions no-color">
-        <input type="submit" value="Xóa" class="btn btn-danger" /> |
-        <a href="@Url.Action("Index","Employees")" class="btn btn-info">Quản Lý</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a href="@Url.Action("Index","Employees")" class="btn btn-info">Manage</a>
     </div>
     }
 </div>

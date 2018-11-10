@@ -157,7 +157,7 @@
                         </a>
                         <ul class="sub">
                             <li><a class="" href="@Url.Action("Index","Customers")">Khách Hàng</a></li>
-                            <li><a class="" href="@Url.Action("Index","Employess")">Nhân Viên</a></li>
+                            <li><a class="" href="@Url.Action("Index","Employees")">Employees</a></li>
                             <li><a class="" href="#">Đơn Hàng</a></li>
                             <li><a class="" href="@Url.Action("Index","PaymentMethods")">HTTT</a></li>
                             <li><a class="" href="#">Thống Kê</a></li>
@@ -250,15 +250,12 @@
             $('#tablefillset').DataTable(
                 {
                     "language": {
-                        "lengthMenu": "Hiển thị _MENU_ số dòng trên trang",
-                        "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
-                        "infoEmpty": "Dữ liệu rỗng",
-                        "emptyTable": "Chưa có dữ liệu nào",
-                        "processing": "Đang xử lý...",
-                        "search": "Tìm kiếm:",
-                        "loadingRecords": "Đang load dữ liệu...",
-                        "zeroRecords": "không tìm thấy dữ liệu",
-                        "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
+                        "infoEmpty": "Data null",
+                        "emptyTable": "Null Data",
+                        "processing": "Access...",
+                        "search": "Search:",
+                        "loadingRecords": "load...",
+                        "zeroRecords": "Data cannot find",
                         "paginate": {
                             "first": "|<",
                             "last": ">|",
@@ -266,7 +263,7 @@
                             "previous": "<<"
                         }
                     },
-                    "lengthMenu": [[5, 10, 15, 20, 25, 30, -1], [5, 10, 15, 20, 25, 30, "Tất cả"]]
+                    "lengthMenu": [[5, 10, 15, 20, 25, 30, -1], [5, 10, 15, 20, 25, 30, "All"]]
                 }
 
             );
