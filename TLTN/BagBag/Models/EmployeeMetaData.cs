@@ -10,43 +10,43 @@ namespace BagBag.Models
     {
         internal sealed class EmployeeMetaData
         {
-            [Display(Name ="Mã Nhân Viên")]
-            [Required(ErrorMessage ="Không Được Để Rỗng")]
+            [Display(Name ="Employee Code")]
+            [Required(ErrorMessage ="Can not null")]
             public string EmployeeCode { get; set; }
 
             [Display(Name ="Password")]
-            [Required(ErrorMessage ="Không được để rỗng")]
+            [Required(ErrorMessage = "Can not nullg")]
             [DataType(DataType.Password)]
             public string EmployeePass { get; set; }
 
-            [Display(Name = "Họ")]
-            [Required(ErrorMessage = "Không được để rỗng")]
+            [Display(Name = "Last Name")]
+            [Required(ErrorMessage = "Can not null")]
             public string LastName { get; set; }
 
-            [Display(Name = "Tên")]
-            [Required(ErrorMessage = "Không được để rỗng")]
+            [Display(Name = "Firts Name")]
+            [Required(ErrorMessage = "Can not null")]
             public string FirstName { get; set; }
 
-            [Display(Name = "Giới Tính")]
+            [Display(Name = "Gender")]
            
             public Nullable<bool> EmployeeGender { get; set; }
 
-            [Display(Name ="Sinh Nhật")]
-            [DataType(DataType.Date,ErrorMessage ="Dữ Liệu Phài là kiểu ngày tháng")]
-            [Required(ErrorMessage = "Không Được Để Rỗng")]
+            [Display(Name ="Birthday")]
+            [DataType(DataType.Date,ErrorMessage ="Birthday is not valid")]
+            [Required(ErrorMessage = "Can not null")]
             public Nullable<System.DateTime> BirthDate { get; set; }
 
-            [Display(Name ="Hình đại diện")]
+            [Display(Name ="IMG")]
             public string EmployeImg { get; set; }
 
             [Display(Name ="Email")]
-            [DataType(DataType.EmailAddress, ErrorMessage = "Sai định dạng Email")]
-            [Required(ErrorMessage = "Không Được Để Rỗng")]
+            [DataType(DataType.EmailAddress, ErrorMessage = "Email is not valid")]
+            [Required(ErrorMessage = "Can not null")]
             public string EmployeeEmail { get; set; }
 
-            [Required(ErrorMessage = "Không Được Để Rỗng")]
+            [Required(ErrorMessage = "Can not null")]
             [DataType(DataType.MultilineText)]
-            [Display(Name ="Địa Chỉ")]
+            [Display(Name ="Address")]
             public string EmployeeAddress { get; set; }
 
             public Nullable<int> RoleId { get; set; }

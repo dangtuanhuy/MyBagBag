@@ -11,42 +11,42 @@ namespace BagBag.Models
         internal sealed class CustomerMetaData
         {
             [Display(Name = "Username")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Required(ErrorMessage = "Can not null")]
             public string CustomerCode { get; set; }
 
             [Display(Name = "Password")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Required(ErrorMessage = "Can not null")]
             [DataType(DataType.Password)]
             public string CustomerPass { get; set; }
 
-            [Display(Name = "Họ và tên")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Display(Name = "FullName")]
+            [Required(ErrorMessage = "Can not null")]
             public string CustomerFullName { get; set; }
 
-            [Display(Name = "Giới tính")]
+            [Display(Name = "Gender")]
             
             public Nullable<int> CustomerGender { get; set; }
 
             public string ContactCompany { get; set; }
 
-            [Display(Name = "Địa chỉ")]
+            [Display(Name = "Address")]
             [DataType(DataType.MultilineText)]
             public string CustomerAddress { get; set; }
 
-            [Display(Name = "Vùng")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Display(Name = "Region")]
+            [Required(ErrorMessage = "Can not null")]
             public string CustomerRegion { get; set; }
 
-            [Display(Name = "Mã bưu điện")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Display(Name = "ZIP code")]
+            [Required(ErrorMessage = "Can not null")]
             public string CustomerPostalCode { get; set; }
 
-            [Display(Name = "Điện Thoại")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Display(Name = "Phone")]
+            [Required(ErrorMessage = "Can not null")]
             public string CustomerPhone { get; set; }
 
             [Display(Name = "Fax")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Required(ErrorMessage = "Can not null")]
             public string CustomerFax { get; set; }
         }
     }

@@ -11,32 +11,32 @@ namespace BagBag.Models
         internal sealed class ProductMetaData
         {
             public int ProductId { get; set; }
-            [Display(Name ="Tên Sản Phẩm")]
-            [Required(ErrorMessage = "Vui lòng điền tên sản phẩm")]
+            [Display(Name ="Product's Name")]
+            [Required(ErrorMessage = "Can not null")]
             public string ProductName { get; set; }
 
-            [Display(Name ="Chi Tiết")]
-            [Required(ErrorMessage = "Vui lòng điền thông tin chi tiết sản phẩm")]
+            [Display(Name ="Details")]
+            [Required(ErrorMessage = "Can not null")]
             [DataType(DataType.MultilineText)]
             public string ProductDetails { get; set; }
 
-            [Display(Name = "Trạng Thái")]
-            [Required(ErrorMessage = "Vui lòng chọn trạng thái sản phẩm")]
+            [Display(Name = "Status")]
+            [Required(ErrorMessage = "Can not null")]
             public Nullable<bool> ProductStatus { get; set; }
 
-            [Display(Name = "Ngày Nhận Hàng")]
+            [Display(Name = "Product Date")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [DataType(DataType.Date, ErrorMessage = "Dữ liệu phải là kiểu ngày tháng")]
-            [Required(ErrorMessage = "Vui lòng điền ngày nhận hàng")]
+            [DataType(DataType.Date, ErrorMessage = "Input Data is not valid")]
+            [Required(ErrorMessage = "Can not null")]
             public Nullable<System.DateTime> ProductUpdate { get; set; }
 
-            [Display(Name ="Số lượng")]
-            [Required(ErrorMessage ="Vui lòng nhập số lượng")]
+            [Display(Name ="Qty")]
+            [Required(ErrorMessage = "Can not null")]
             public Nullable<int> ProductQty { get; set; }
 
-            [Display(Name = "Giá Bán")]
-            [Required(ErrorMessage = "Vui lòng nhập giá bán")]
-            [DataType(DataType.Currency,ErrorMessage ="Nhập vào đơn vị tiền tệ")]
+            [Display(Name = "Product Sold")]
+            [Required(ErrorMessage = "Can not null")]
+            [DataType(DataType.Currency,ErrorMessage = "Input Data is not valid")]
             public Nullable<decimal> ProductSold { get; set; }
 
         }

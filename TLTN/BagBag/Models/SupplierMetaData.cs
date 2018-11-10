@@ -13,29 +13,29 @@ namespace BagBag.Models
         {
             public int SupplierId { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name ="Công Ty Cung Cấp")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name ="Company")]
             public string CompanyName { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Người đại diện")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Representative")]
             public string ContactName { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Vấn đề chính")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Content")]
             [DataType(DataType.MultilineText)]
             public string ContactTitle { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Địa chỉ")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Address")]
             [DataType(DataType.MultilineText)]
             public string Address { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Số điện thoại")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Phone")]
             public string Phone { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Required(ErrorMessage = "Can not null")]
             [Display(Name = "Fax")]
             public string Fax { get; set; }
 

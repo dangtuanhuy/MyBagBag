@@ -12,24 +12,24 @@ namespace BagBag.Models
             public int NewsId { get; set; }
 
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name ="Tên Tin Tức")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name ="Title")]
             public string NewTitles { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Nội dung")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Context")]
             [DataType(DataType.MultilineText)]
             public string NewsDetails { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Tạo bởi")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Create by")]
             public string NewsBy { get; set; }
 
 
-            [Display(Name ="Ngày đăng")]
+            [Display(Name ="Date")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [DataType(DataType.DateTime, ErrorMessage = "Dữ liệu phải là kiểu ngày tháng")]
-            [Required(ErrorMessage = "Vui lòng điền ngày đăng tin")]
+            [DataType(DataType.DateTime, ErrorMessage = "Date is not valid")]
+            [Required(ErrorMessage = "Can not null")]
             public Nullable<System.DateTime> NewsDate { get; set; }
 
 

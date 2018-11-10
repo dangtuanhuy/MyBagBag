@@ -8,9 +8,9 @@ namespace BagBag.Models
 {
     public class LoginUser
     {
-        [Required(ErrorMessage = "Username không được rỗng")]
+        [Required(ErrorMessage = "Username can not null")]
         public string CustomerCode { get; set; }
-        [Required(ErrorMessage = "Password không được để rỗng")]
+        [Required(ErrorMessage = "Password can not null")]
         public string CustomerPass { get; set; }
     }
 }

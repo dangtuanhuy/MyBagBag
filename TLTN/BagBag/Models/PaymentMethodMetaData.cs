@@ -9,11 +9,11 @@ namespace BagBag.Models
     {
         internal sealed class PaymentMethodMetaData
         {
-            [Display(Name ="Hình Thức Thanh Toán")]
+            [Display(Name ="Payment Method")]
             public int PaymentId { get; set; }
 
-            [Display(Name = "Hình Thức Thanh Toán")]
-            [Required(ErrorMessage ="Vui lòng điền hình thức thanh toán")]
+            [Display(Name = "Payment method")]
+            [Required(ErrorMessage = "Can not null")]
             public string PaymentName { get; set; }
         }
     }

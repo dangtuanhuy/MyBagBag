@@ -11,14 +11,14 @@ namespace BagBag.Models
         {
             public int BranchId { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Tên Chi Nhánh")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Branch")]
             public string BranchName { get; set; }
 
-            [Required(ErrorMessage = "Không được rỗng")]
-            [Display(Name = "Thông Tin Chi Nhánh")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Information")]
             public string BranchDetails { get; set; }
-            [Display(Name = "Quản Lý")]
+            [Display(Name = "Manager")]
             public string EmployeeCode { get; set; }
         }
     }

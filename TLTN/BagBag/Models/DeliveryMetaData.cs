@@ -12,20 +12,20 @@ namespace BagBag.Models
         {
             public int DeliveryId { get; set; }
 
-            [Required(ErrorMessage ="Không được rỗng")]
-            [Display(Name ="Giao Hàng")]
+            [Required(ErrorMessage ="Can not null")]
+            [Display(Name ="Delivery")]
             public string DeliveryTitle { get; set; }
 
-            [Display(Name = "Phương tiện")]
+            [Display(Name = "Vehicle")]
             public string ImgDelivery { get; set; }
 
-            [Display(Name = "Chi tiết")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Display(Name = "Details")]
+            [Required(ErrorMessage = "Can not null")]
             [DataType(DataType.MultilineText)]
             public string DeliveryDetails { get; set; }
 
-            [Display(Name = "Câu hỏi thường gặp")]
-            [Required(ErrorMessage = "Không được rỗng")]
+            [Display(Name = "Question")]
+            [Required(ErrorMessage = "Can not null")]
             public string DeliveryQuestion { get; set; }
             public string EmployeeCode { get; set; }
         }

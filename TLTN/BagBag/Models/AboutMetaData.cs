@@ -14,16 +14,16 @@ namespace BagBag.Models
             public int AboutId { get; set; }
 
 
-            [Display(Name = "Về Chúng Tôi")]
-            [Required(ErrorMessage ="Vui lòng điền vào đây")]
+            [Display(Name = "About")]
+            [Required(ErrorMessage ="Can not null")]
             public string AboutUs { get; set; }
 
-            [Display(Name = "Hình Mô Tả")]
+            [Display(Name = "Img")]
             public string AboutImg { get; set; }
 
 
-            [Required(ErrorMessage = "Vui lòng điền vào đây")]
-            [Display(Name = "Chi Tiết")]
+            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Details")]
             public string AboutDetails { get; set; }
             public string EmployeeCode { get; set; }
 
