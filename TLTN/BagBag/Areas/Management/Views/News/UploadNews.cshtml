@@ -22,7 +22,6 @@
                 </thead>
                 @foreach (var item in @Model.ImgNews)
                 {
-
                     <tbody>
                         <tr>
                             <th>@item.ImgNewId</th>
@@ -32,7 +31,6 @@
                             <th>@Html.ActionLink("X", "DeleteImg", new { id = item.ImgNewId, NewsId = item.NewsId }, htmlAttributes: new { onclick = "return confirm('Are you sure Delete Img?');", @class = "btn btn-circle brn-danger" })</th>
                         </tr>
                     </tbody>
-
                 }
             </table>
         </div>
