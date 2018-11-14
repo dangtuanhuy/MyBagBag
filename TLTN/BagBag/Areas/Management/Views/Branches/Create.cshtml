@@ -5,8 +5,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class=" text-center">Thêm Danh Mục</h2>
-<div><a href="@Url.Action("Index","Branches")" class="btn btn-info">Quản lý</a></div>
+<h2 class=" text-center">Branch</h2>
+<div><a href="@Url.Action("Index","Branches")" class="btn btn-info">Manage</a></div>
 
 
 @using (Html.BeginForm())
@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thêm Mới" class="btn btn-info" />
+                <input type="submit" value="Create" class="btn btn-info" />
             </div>
         </div>
     </div>

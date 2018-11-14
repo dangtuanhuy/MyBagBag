@@ -6,7 +6,7 @@
 }
 
 
-<h2 class="text-center">DANH SÁCH LIÊN HỆ</h2>
+<h2 class="text-center">Information of Communication </h2>
 
 
 @Html.Raw(TempData["msg1"])
@@ -75,7 +75,7 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Contacts", new { id = item.ContactId })" class="btn btn-primary">
+                    <a href="@Url.Action("Delete", "Contacts", new { id = item.ContactId })" class="btn btn-danger">
                         <i class="fa fa-list-alt"></i>
                         <span>
 

@@ -17,15 +17,6 @@
         <dd>
             @Html.DisplayFor(model => model.AboutUs)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AboutImg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AboutImg)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.AboutDetails)
         </dt>
@@ -49,7 +40,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             <a href="@Url.Action("Index","Abouts")" class="btn btn-info">Manage</a>
         </div>
     }

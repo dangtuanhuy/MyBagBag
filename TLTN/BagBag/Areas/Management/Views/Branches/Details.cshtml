@@ -5,8 +5,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center">Thông Tin Chi Nhánh</h2>
-<a href="@Url.Action("Index","Branches")" class="btn btn-info">Quản Lý</a>
+<h2 class="text-center">Branch's Information</h2>
+<a href="@Url.Action("Index","Branches")" class="btn btn-info">Manage</a>
 
 <div>
 
@@ -29,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+            @Html.DisplayNameFor(model => model.Employee.EmployeeCode)
         </dt>
 
         <dd>
@@ -39,5 +39,5 @@
     </dl>
 </div>
 <p>
-    <a href="@Url.Action("Edit", "Branches", new { id = Model.BranchId })" class="btn btn-success">Chỉnh Sửa</a>
+    <a href="@Url.Action("Edit", "Branches", new { id = Model.BranchId })" class="btn btn-success">Edit</a>
 </p>
