@@ -53,6 +53,8 @@ namespace BagBag.Areas.Management.Controllers
             {
                 try
                 {
+                    supplier.Create_Supplier = DateTime.Now;
+                    supplier.Status_Supplier = true;
                     db.Suppliers.Add(supplier);
                     db.SaveChanges();
                 }
@@ -98,6 +100,8 @@ namespace BagBag.Areas.Management.Controllers
             {
                 try
                 {
+                    supplier.Create_Supplier = DateTime.Now;
+                    supplier.Status_Supplier = true;
                     db.Entry(supplier).State = EntityState.Modified;
                     db.SaveChanges();
                 }

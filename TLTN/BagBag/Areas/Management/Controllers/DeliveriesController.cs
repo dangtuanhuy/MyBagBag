@@ -192,15 +192,26 @@ namespace BagBag.Areas.Management.Controllers
 
                         // Upload file lên Server ở thư mục ~/myImg/
                         file.SaveAs(path);
-
-                        // Lấy imageurl để lưu vào database, có định dạng "~/myImg/Vehicle/Id/ten_file.jpg"
-                        var imageUrl = defaultFolderToSaveFile + fileName;
+                        try
+                        {
+                            // Lấy imageurl để lưu vào database, có định dạng "~/myImg/Vehicle/Id/ten_file.jpg"
+                            var imageUrl = defaultFolderToSaveFile + fileName;
 
                         // Lưu thông tin image url vào product
                         var Delivery = db.Deliveries.Find(id);
                         Delivery.ImgDelivery = imageUrl;
                         db.SaveChanges();
-
+                        }
+                        catch (DbEntityValidationException dbEx)
+                        {
+                            foreach (var validationErrors in dbEx.EntityValidationErrors)
+                            {
+                                foreach (var validationError in validationErrors.ValidationErrors)
+                                {
+                                    System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                                }
+                            }
+                        }
                         return RedirectToAction("Index");
                     }
                 }

@@ -55,6 +55,7 @@ namespace BagBag.Areas.Management.Controllers
 
                 {
                     category.Create_Category = DateTime.Now;
+                    category.Status_Category = true;
                     db.Categories.Add(category);
                     db.SaveChanges();
                 }
@@ -102,6 +103,7 @@ namespace BagBag.Areas.Management.Controllers
                 {
                     db.Entry(category).State = EntityState.Modified;
                     category.Create_Category = DateTime.Now;
+                    category.Status_Category = true;
                     db.SaveChanges();
                 }
                 catch (DbEntityValidationException dbEx)

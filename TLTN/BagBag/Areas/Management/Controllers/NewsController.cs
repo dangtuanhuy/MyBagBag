@@ -56,6 +56,7 @@ namespace BagBag.Areas.Management.Controllers
             {
                 try
                 {
+                    news.NewsDate = DateTime.Now;
                     db.News.Add(news);
                     db.SaveChanges();
                 }
@@ -104,6 +105,7 @@ namespace BagBag.Areas.Management.Controllers
                 try
                 {
                     db.Entry(news).State = EntityState.Modified;
+                    news.NewsDate = DateTime.Now;
                     db.SaveChanges();
                 }
                 catch (DbEntityValidationException dbEx)
