@@ -5,6 +5,7 @@
 }
 
 <h2 class="text-center">Upload IMG</h2>
+<div><a href="@Url.Action("Index","Abouts")" class="btn btn-info">Manage</a></div>
 
 @using (Html.BeginForm("UploadAbout", "Abouts", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {

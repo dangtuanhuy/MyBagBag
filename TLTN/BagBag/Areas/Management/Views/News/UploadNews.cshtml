@@ -4,7 +4,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class=" text-center">Upload Hình Tin Tức</h2>
+<h2 class="text-center">Upload IMG</h2>
+<div><a href="@Url.Action("Index","News")" class="btn btn-info">Manage</a></div>
 @using (Html.BeginForm("UploadNews", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <article class="panel panel-info">
@@ -13,11 +14,11 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Mã</th>
-                        <th>Tên Hình</th>
-                        <th>Thứ Tự</th>
-                        <th>Hình</th>
-                        <th>Xóa</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Sort</th>
+                        <th>IMG</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 @foreach (var item in @Model.ImgNews)

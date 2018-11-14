@@ -5,7 +5,7 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h3>Bạn có muốn có xóa danh mục này không?</h3>
+<h3 class="text-center">Are you sure delete record?</h3>
 <div>
 
     <hr />
@@ -43,11 +43,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+            @Html.DisplayNameFor(model => model.Employee.EmployeeCode)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Employee.EmployeePass)
+            @Html.DisplayFor(model => model.Employee.EmployeeCode)
         </dd>
 
     </dl>
@@ -57,8 +57,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" /> |
-            <a href="@Url.Action("Index","News")" class="btn btn-info">Quản Lý</a>
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a href="@Url.Action("Index","News")" class="btn btn-info">Manage</a>
         </div>
     }
 </div>

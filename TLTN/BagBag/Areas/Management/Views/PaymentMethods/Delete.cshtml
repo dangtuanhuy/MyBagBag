@@ -5,7 +5,7 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h3>Bạn có muốn có xóa danh mục này không?</h3>
+<h3 class="text-center">Are you sure</h3>
 <div>
    
     <hr />
@@ -24,8 +24,8 @@
         @Html.AntiForgeryToken()
 
     <div class="form-actions no-color">
-        <input type="submit" value="Xóa" class="btn btn-danger" /> |
-        <a href="@Url.Action("Index","PaymentMethods")" class="btn btn-info">Quản Lý</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a href="@Url.Action("Index","PaymentMethods")" class="btn btn-info">Manage</a>
     </div>
     }
 </div>

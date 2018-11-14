@@ -4,8 +4,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center">Chính Sách Vận Chuyển</h2>
-<div><a href="@Url.Action("Index","Deliveries")" class="btn btn-info">Quản lý</a></div>
+<h2 class="text-center">Upload IMG</h2>
+<div><a href="@Url.Action("Index","Deliveries")" class="btn btn-info">Manage</a></div>
 @using (Html.BeginForm("UploadDelivery", "Deliveries", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

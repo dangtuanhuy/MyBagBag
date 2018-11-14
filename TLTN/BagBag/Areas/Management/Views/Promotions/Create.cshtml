@@ -5,15 +5,15 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class=" text-center">Thêm Khuyến Mãi</h2>
-<div><a href="@Url.Action("Index","Promotions")" class="btn btn-info">Quản lý</a></div>
+<h2 class=" text-center">Create Promotion</h2>
+<div><a href="@Url.Action("Index","Promotions")" class="btn btn-info">Manage</a></div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Promotion</h4>
+ 
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -68,7 +68,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thêm" class="btn btn-info" />
+                <input type="submit" value="Create" class="btn btn-info" />
             </div>
         </div>
     </div>

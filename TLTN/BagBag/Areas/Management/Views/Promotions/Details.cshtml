@@ -5,8 +5,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center">Thông Tin Khuyến Mãi</h2>
-<a href="@Url.Action("Index","Promotions")" class="btn btn-info">Quản Lý</a>
+<h2 class="text-center">Information's Promotion</h2>
+<a href="@Url.Action("Index","Promotions")" class="btn btn-info">Manage</a>
 
 <div>
  
@@ -63,5 +63,5 @@
     </dl>
 </div>
 <p>
-    <a href="@Url.Action("Edit", "Promotions", new { id = Model.PromotionId })" class="btn btn-success">Chỉnh Sửa</a>
+    <a href="@Url.Action("Edit", "Promotions", new { id = Model.PromotionId })" class="btn btn-success">Edit</a>
 </p>

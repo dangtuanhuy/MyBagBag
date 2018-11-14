@@ -5,11 +5,11 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center">Danh Sách Tin Tức</h2>
+<h2 class="text-center">Management News</h2>
 
 <p>
     <a href="@Url.Action("Create", "News")" class="btn btn-info">
-        Tạo Mới
+        Create
     </a>
 </p>
 @Html.Raw(TempData["msg1"])
@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.NewsDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+                @Html.DisplayNameFor(model => model.Employee.EmployeeCode)
             </th>
             <th></th>
         </tr>
@@ -51,7 +51,7 @@
                     @Html.DisplayFor(modelItem => item.NewsDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
+                    @Html.DisplayFor(modelItem => item.Employee.EmployeeCode)
                 </td>
                 <td>
                     <a href="@Url.Action("UploadNews", "News", new { id = item.NewsId})" class="btn btn-default">

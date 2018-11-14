@@ -5,8 +5,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center"> Chỉnh sửa thông tin danh mục</h2>
-<div><a href="@Url.Action("Index","Promotions")" class="btn btn-info">Quản lý</a></div>
+<h2 class="text-center">Update Information of Promotion</h2>
+<div><a href="@Url.Action("Index","Promotions")" class="btn btn-info">Manage</a></div>
 
 
 @using (Html.BeginForm())
@@ -71,7 +71,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cập Nhật" class="btn btn-info" />
+                <input type="submit" value="Update" class="btn btn-info" />
             </div>
         </div>
     </div>
