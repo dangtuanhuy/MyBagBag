@@ -31,9 +31,9 @@ namespace BagBag.Models
            
             public Nullable<bool> EmployeeGender { get; set; }
 
-            [Display(Name ="Birthday")]
-            [DataType(DataType.Date,ErrorMessage ="Birthday is not valid")]
-            [Required(ErrorMessage = "Can not null")]
+            [Display(Name = "Birthday")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            [DataType(DataType.DateTime, ErrorMessage = "Input data must be a date type")]
             public Nullable<System.DateTime> BirthDate { get; set; }
 
             [Display(Name ="IMG")]

@@ -54,9 +54,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeGender)
-                </td>
+
+
+                @if (item.EmployeeGender == true)
+                {
+                    <td class="text-center">
+                        Male
+                    </td>
+                }
+                else
+                {
+                    <td class="text-center">
+                        Female
+                    </td>
+                }
+
                 <td>
                     @Html.DisplayFor(modelItem => item.BirthDate)
                 </td>
@@ -67,6 +79,13 @@
                     @Html.DisplayFor(modelItem => item.EmployeeAddress)
                 </td>
                 <td>
+                    <a href="@Url.Action("UploadEmp", "Employees", new { id = item.EmployeeCode})" class="btn btn-info">
+                        <i class="fa fa-image"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
                     <a href="@Url.Action("Edit", "Employees", new { id = item.EmployeeCode})" class="btn btn-success">
                         <i class="fa fa-pencil"></i>
                         <span>

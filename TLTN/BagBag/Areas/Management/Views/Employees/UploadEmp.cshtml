@@ -4,7 +4,8 @@
     Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
 }
 
-<h2 class="text-center">Về Chúng Tôi</h2>
+<h2 class="text-center">Upload IMG</h2>
+<div><a href="@Url.Action("Index","Employees")" class="btn btn-info">Manage</a></div>
 
 @using (Html.BeginForm("UploadEmp", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
