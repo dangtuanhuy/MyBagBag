@@ -27,7 +27,6 @@ namespace BagBag.Models
         public string OrderAddress { get; set; }
         public string OrderPhone { get; set; }
         public Nullable<int> PaymentMethod { get; set; }
-        public string PaymentOnline { get; set; }
         public Nullable<bool> Order_Status { get; set; }
     
         public virtual Customer Customer { get; set; }
