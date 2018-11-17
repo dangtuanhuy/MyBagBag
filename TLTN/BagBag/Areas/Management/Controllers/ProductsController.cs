@@ -52,7 +52,7 @@ namespace BagBag.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductUpdate,ProductQty,ProductSold,SupplierId,CategoryId,PromotionId")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductUpdate,ProductQty,ProductSold,SupplierId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {

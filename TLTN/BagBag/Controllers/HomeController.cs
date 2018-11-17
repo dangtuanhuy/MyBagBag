@@ -13,11 +13,11 @@ namespace BagBag.Controllers
         public ActionResult Index()
         {
 
-            var listProducts1 = (from p in db.Products where p.Category.CategoryName == "Balo Quân Sự" orderby p.ProductUpdate select p).Take(3);
+            var listProducts1 = (from p in db.Products where p.Category.CategoryName == "Military backpack" orderby p.ProductUpdate select p).Take(3);
             ViewBag.ListProduct1 = listProducts1;
 
             //Danh Sách Balo Laptop
-            var listProducts2 = (from p in db.Products where p.Category.CategoryName == "Ba Lô LapTop" orderby p.ProductName select p).Take(3);
+            var listProducts2 = (from p in db.Products where p.Category.CategoryName == "Backpack LapTop" orderby p.ProductName select p).Take(3);
             ViewBag.ListProduct2 = listProducts2;
 
             //Danh sách Balo Tiện Ích
@@ -25,7 +25,7 @@ namespace BagBag.Controllers
             ViewBag.ListProduct3 = listProducts3;
 
             //Danh sách túi đeo chéo
-            var listProducts4 = (from p in db.Products where p.Category.CategoryName == "Túi đeo chéo" orderby p.ProductQty select p).Take(3);
+            var listProducts4 = (from p in db.Products where p.Category.CategoryName == "Bag Withdrawn" orderby p.ProductQty select p).Take(3);
             ViewBag.ListProduct4 = listProducts4;
 
             //Danh sách balo du lịch

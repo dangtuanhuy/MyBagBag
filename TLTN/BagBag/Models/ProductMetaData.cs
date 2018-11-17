@@ -24,9 +24,9 @@ namespace BagBag.Models
             [Required(ErrorMessage = "Can not null")]
             public Nullable<bool> ProductStatus { get; set; }
 
-            [Display(Name = "Product Date")]
+            [Display(Name = "Date")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [DataType(DataType.Date, ErrorMessage = "Input Data is not valid")]
+            [DataType(DataType.DateTime, ErrorMessage = "Input data must be a date type")]
             [Required(ErrorMessage = "Can not null")]
             public Nullable<System.DateTime> ProductUpdate { get; set; }
 
