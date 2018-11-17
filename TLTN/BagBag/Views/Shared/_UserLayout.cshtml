@@ -27,25 +27,25 @@
     <div class="header-top">
         <div class="wrap">
             <div class="header-top-left">
-            
+
                 <div class="clear"></div>
             </div>
             <div class="cssmenu">
                 <ul>
 
-                    
+
                     @if (@Session["username"] == null)
                     {
                         <li><a href="@Url.Action("Login", "LoginUser")">Log In</a></li>
                     }
-                    
+
                     else
                     {
                         <li>Hi,@Session["username"] </li>
 
                         <li><a href="@Url.Action("UpdateAcount","Registers",new { id = @Session["username"] })">Update Account</a></li>
 
-                        <li><a href="#">Giỏ Hàng</a></li>
+                        <li><a href="@Url.Action("XemGioHang","Cart")">Cart</a></li>
 
                         <li><a href="@Url.Action("LogOff","LoginUser")">Log Out</a></li>
 
@@ -60,93 +60,24 @@
         <div class="wrap">
             <div class="header-bottom-left">
                 <div class="logo">
-                    <a href="@Url.Action("Index","Home")"><img src="~/Content/User/images/logo.png" alt="" /></a>
+                    <a href="@Url.Action("Index","Home")">BAGBAG</a>
                 </div>
                 <div class="menu">
                     <ul class="megamenu skyblue">
                         <li class="active grid"><a href="@Url.Action("Index","Home")">Home</a></li>
                         <li>
                             <a class="color4" href="#">women</a>
-                            <div class="megapanel">
-                                <div class="row">
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Contact Lenses</h4>
-                                            <ul>
-                                                <li><a href="#">Daily-wear soft lenses</a></li>
-                                                <li><a href="#">Extended-wear</a></li>
-                                                <li><a href="#">Lorem ipsum </a></li>
-                                                <li><a href="#">Planned replacement</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Sun Glasses</h4>
-                                            <ul>
-                                                <li><a href="#">Heart-Shaped</a></li>
-                                                <li><a href="#">Square-Shaped</a></li>
-                                                <li><a href="#">Round-Shaped</a></li>
-                                                <li><a href="#">Oval-Shaped</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Eye Glasses</h4>
-                                            <ul>
-                                                <li><a href="#">Anti Reflective</a></li>
-                                                <li><a href="#">Aspheric</a></li>
-                                                <li><a href="#">Bifocal</a></li>
-                                                <li><a href="#">Hi-index</a></li>
-                                                <li><a href="#">Progressive</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </li>
                         <li>
                             <a class="color5" href="#">Men</a>
-                            <div class="megapanel">
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Contact Lenses</h4>
-                                        <ul>
-                                            <li><a href="#">Daily-wear soft lenses</a></li>
-                                            <li><a href="#">Extended-wear</a></li>
-                                            <li><a href="#">Lorem ipsum </a></li>
-                                            <li><a href="#">Planned replacement</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Sun Glasses</h4>
-                                        <ul>
-                                            <li><a href="#">Heart-Shaped</a></li>
-                                            <li><a href="#">Square-Shaped</a></li>
-                                            <li><a href="#">Round-Shaped</a></li>
-                                            <li><a href="#">Oval-Shaped</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Eye Glasses</h4>
-                                        <ul>
-                                            <li><a href="#">Anti Reflective</a></li>
-                                            <li><a href="#">Aspheric</a></li>
-                                            <li><a href="#">Bifocal</a></li>
-                                            <li><a href="#l">Hi-index</a></li>
-                                            <li><a href="#">Progressive</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
                         </li>
                         <li><a class="color6" href="#">Other</a></li>
-                        <li><a class="color7" href="#">Purchase</a></li>
+                        <li><a class="color7" href="#">Delivery</a></li>
+                        <li><a class="color7" href="#">News</a></li>
+                        <li><a class="color7" href="#">Branch</a></li>
+                        <li><a class="color7" href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -176,7 +107,7 @@
                         </li>
                     </ul>
                     <ul class="last">
-                   @Html.Action("ShoppingPartial", "Cart")
+                        @Html.Action("ShoppingPartial", "Cart")
                     </ul>
                 </div>
             </div>
@@ -223,7 +154,7 @@
                                 <div class="clear"> </div>
                             </div>
                             <div class="col_1_of_f_2 span_1_of_f_2">
-                                
+
                                 <h3>From Twitter</h3>
                                 <div class="recent-tweet">
                                     <div class="recent-tweet-icon">
@@ -244,7 +175,7 @@
                                     <div class="clear"> </div>
                                 </div>
                             </div>
-                       
+
                             <div class="clear"></div>
                         </div>
                     </div>
