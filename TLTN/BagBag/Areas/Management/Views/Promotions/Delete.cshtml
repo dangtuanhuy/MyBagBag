@@ -40,9 +40,18 @@
             @Html.DisplayNameFor(model => model.PromotionStatus)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PromotionStatus)
-        </dd>
+        @if (Model.PromotionStatus == true)
+        {
+            <dd>
+                Yes
+            </dd>
+        }
+        else
+        {
+            <dd>
+                No
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.PromotionOpen)

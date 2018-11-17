@@ -50,9 +50,18 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PromotionDiscount)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PromotionStatus)
-                </td>
+                @if (item.PromotionStatus == true)
+                {
+                    <td class="text-center">
+                        Open
+                    </td>
+                }
+                else
+                {
+                    <td class="text-center">
+                        Close
+                    </td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.PromotionOpen)
                 </td>

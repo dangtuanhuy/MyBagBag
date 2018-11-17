@@ -2,15 +2,22 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Areas/Management/Views/Shared/_AdministratorLayout.cshtml";
+    Layout = "~/Areas/Management/Views/Shared/_PrintForm.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-center">Details of Order</h2>
 
 <div>
-    <h4>Order</h4>
+
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerFullName)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OrderDate)
         </dt>
@@ -43,41 +50,26 @@
             @Html.DisplayFor(model => model.OrderPhone)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentOnline)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentOnline)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Order_Status)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Order_Status)
-        </dd>
+        @if (Model.Order_Status == true)
+        {
+            <dd>
+                Yes
+            </dd>
+        }
+        else
+        {
+            <dd>
+                No
+            </dd>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer.CustomerPass)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Customer.CustomerPass)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentMethod1.PaymentName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentMethod1.PaymentName)
-        </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

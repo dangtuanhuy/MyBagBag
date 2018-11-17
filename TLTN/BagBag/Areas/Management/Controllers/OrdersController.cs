@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BagBag.Models;
+using Rotativa;
 
 namespace BagBag.Areas.Management.Controllers
 {
@@ -124,7 +125,19 @@ namespace BagBag.Areas.Management.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult PrintViewToPdf()
+        {
+            var report = new ActionAsPdf("Index");
+            return report;
+        }
+        public ActionResult PrintOrder(int id)
+        {
 
+            Order order = db.Orders.FirstOrDefault(p => p.OrderId == id);
+            var report = new PartialViewAsPdf("Details", order);
+            return report;
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

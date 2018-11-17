@@ -30,9 +30,18 @@
             @Html.DisplayNameFor(model => model.ProductStatus)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductStatus)
-        </dd>
+        @if (Model.ProductStatus == true)
+        {
+            <dd>
+                Yes
+            </dd>
+        }
+        else
+        {
+            <dd>
+                No
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.ProductUpdate)
