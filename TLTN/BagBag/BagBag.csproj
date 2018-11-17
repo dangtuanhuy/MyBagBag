@@ -204,6 +204,7 @@
     <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\TypeBagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1197,6 +1198,7 @@
     <Content Include="Views\Cart\ConfirmCheckOut.cshtml" />
     <Content Include="Views\LoginUser\LoginCart.cshtml" />
     <Content Include="Views\Cart\Succees.cshtml" />
+    <Content Include="Views\TypeBag\Men.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
