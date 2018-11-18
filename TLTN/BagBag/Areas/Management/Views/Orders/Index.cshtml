@@ -63,7 +63,14 @@
                     @Html.DisplayFor(modelItem => item.Customer.CustomerFullName)
                 </td>
                 <td>
-                    @Html.ActionLink("Print", "PrintOrder", new { id = item.OrderId })
+
+                    
+                    <a href="@Url.Action("PrintOrder", "Orders", new { id = item.OrderId })" class="btn btn-primary">
+                        <i class="fa fa-print"></i>
+                        <span>
+
+                        </span>
+                    </a>
                 </td>
             </tr>
         }

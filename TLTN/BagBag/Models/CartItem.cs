@@ -16,6 +16,7 @@ namespace BagBag.Models
         public String ProductName { get; set; }
         public Decimal Total { get; set; }
         public Nullable<int> PaymentMethod { get; set; }
+        public int ProductQty { get; set; }
         public CartItem(int ProductId)
         {
             using (MyBagBagEntities db = new MyBagBagEntities())
@@ -27,6 +28,7 @@ namespace BagBag.Models
                 this.ProductSold = pro.ProductSold.Value;
                 this.Total = pro.ProductSold.Value * this.ProductQtyUser;
                 this.ImgPro = pro.ImgProducts.ToList();
+                this.ProductQty = pro.ProductQty.Value;
             }
         }
     }

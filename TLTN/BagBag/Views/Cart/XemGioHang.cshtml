@@ -32,6 +32,8 @@ else
                                     <th>IMG</th>
                                     <th>Products Name</th>
                                     <th>Qty</th>
+
+                                    <th>Status</th>
                                     <th>Price</th>
                                     <th>Total</th>
                                     <th></th>
@@ -42,7 +44,7 @@ else
                                 {
                                     <tr>
                                         <td class="text-center"><img src="~/myImg/BagBag/@item.ImgPro.FirstOrDefault().Img_Product" width="50" height="50" /></td>
-                                        @*<td><a target="_blank" href="@Url.Action("ChiTiet", "SanPham", new { id = item.SanPhamID })"> @item.TenSanPham </a> </td>*@
+
                                         <td>@item.ProductName</td>
                                         <td>
                                             <form action="@Url.Action("SuaSoLuong")" method="get">
@@ -50,13 +52,20 @@ else
                                                 <input type="number" min="1" step="1" name="soluongmoi" value="@item.ProductQtyUser" />
                                                 <button type="submit" class="btn btn-primary btn-sm"> Update </button>
                                             </form>
-                                        </td>
-                                        <td> @item.ProductSold.ToString("#,##0").Replace(',', '.') $ </td>
-                                        <td> @item.Total.ToString("#,##0").Replace(',', '.') $ </td>
+                                            @if (item.ProductQtyUser > item.ProductQty)
+                                            {
+                                            <td> Sorry Limit  @item.ProductQty</td>
+                                        }
+                                        else
+                                        {
+                                            <td>OK</td>
+                                        }
+                                            <td> @item.ProductSold.ToString("#,##0").Replace(',', '.') $ </td>
+                                            <td> @item.Total.ToString("#,##0").Replace(',', '.') $ </td>
 
-                                        <td> <a href="@Url.Action("XoaKhoiGio", new { ProductId = item.ProductId })" onclick="return confirm('Are you sure delete cart?');" class="btn btn-danger btn-sm">Delete</a> </td>
-                                    </tr>
-                                }
+                                            <td> <a href="@Url.Action("XoaKhoiGio", new { ProductId = item.ProductId })" onclick="return confirm('Are you sure delete cart?');" class="btn btn-danger btn-sm">Delete</a> </td>
+                                        </tr>
+                                    }
                                 <tr>
                                     <td></td>
                                     <td class="text-right">Qty:</td>
@@ -80,18 +89,31 @@ else
             <div class=" col-md-12">
                 @using (Html.BeginForm("ConfirmCheckOut_Post", "Cart"))
                 {
-                    if (@Session["username"] == null)
+                    bool ktra = true;
+                    foreach (CartItem item in Model)
                     {
-                        <a class="btn btn-danger" href="@Url.Action("LoginCart", "LoginUser")">Check Out</a>
+                        if (item.ProductQtyUser > item.ProductQty)
+                        {
+                            ktra = false;
+                        }
+                    }
+                    if (ktra == true)
+                    {
+                        if (@Session["username"] == null)
+                        {
+                            <a class="btn btn-danger" href="@Url.Action("LoginCart", "LoginUser")">Check Out</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-danger" href="@Url.Action("ConfirmCheckOut", "Cart")">Check Out</a>
+                        }
                     }
                     else
                     {
-                        <a class="btn btn-danger" href="@Url.Action("ConfirmCheckOut", "Cart")">Check Out</a>
+                        <a class="btn btn-danger" href="@Url.Action("XemGioHang", "Cart")" onclick="return confirm('Sorry! The number of products you purchased exceeds the allowed number');">Check Out</a>
                     }
                     <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Continue shopping</a>
-
                 }
-
             </div>
 
         </div>
