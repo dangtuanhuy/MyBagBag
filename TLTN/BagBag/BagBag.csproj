@@ -224,6 +224,7 @@
     <Compile Include="Models\Contact.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactMetaData.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>MyBagBag.tt</DependentUpon>
     </Compile>
@@ -1199,6 +1200,7 @@
     <Content Include="Views\LoginUser\LoginCart.cshtml" />
     <Content Include="Views\Cart\Succees.cshtml" />
     <Content Include="Views\TypeBag\Men.cshtml" />
+    <Content Include="Views\TypeBag\Women.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

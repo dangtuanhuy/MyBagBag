@@ -75,13 +75,18 @@
             @Html.DisplayFor(model => model.Category.CategoryName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Promotion.PromotionName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Promotion.PromotionName)
-        </dd>
+        @if (Model.Style == true)
+        {
+            <dd>
+                Men
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Women
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.Supplier.CompanyName)
