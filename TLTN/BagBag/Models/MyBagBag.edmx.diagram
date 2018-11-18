@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="MyBagBagModel.Category" Width="1.5" PointX="0.75" PointY="6.5" />
         <EntityTypeShape EntityType="MyBagBagModel.Contact" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="MyBagBagModel.Customer" Width="1.5" PointX="0.75" PointY="13.375" />
-        <EntityTypeShape EntityType="MyBagBagModel.Delivery" Width="1.5" PointX="6" PointY="28.5" />
         <EntityTypeShape EntityType="MyBagBagModel.Employee" Width="1.5" PointX="3.75" PointY="23" />
         <EntityTypeShape EntityType="MyBagBagModel.ImgNew" Width="1.5" PointX="8.25" PointY="19.75" />
         <EntityTypeShape EntityType="MyBagBagModel.ImgProduct" Width="1.5" PointX="5.25" PointY="5.5" />
@@ -28,7 +27,6 @@
         <AssociationConnector Association="MyBagBagModel.FK_Products_Category" />
         <AssociationConnector Association="MyBagBagModel.FK_Customer_Role" />
         <AssociationConnector Association="MyBagBagModel.FK_Order_Customer" />
-        <AssociationConnector Association="MyBagBagModel.FK_Delivery_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_Employee_Role" />
         <AssociationConnector Association="MyBagBagModel.FK_News_Employee" />
         <AssociationConnector Association="MyBagBagModel.FK_ImgNews_News" />
@@ -38,6 +36,8 @@
         <AssociationConnector Association="MyBagBagModel.FK_OrderDetails_Products" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Promotion" />
         <AssociationConnector Association="MyBagBagModel.FK_Products_Supplier" />
+        <EntityTypeShape EntityType="MyBagBagModel.Delivery" Width="1.5" PointX="6" PointY="29" />
+        <AssociationConnector Association="MyBagBagModel.FK_Delivery_Employee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

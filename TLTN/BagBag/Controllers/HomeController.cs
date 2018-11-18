@@ -79,5 +79,6 @@ namespace BagBag.Controllers
 
             return View(contact);
         }
+        
     }
 }

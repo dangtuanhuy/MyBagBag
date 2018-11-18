@@ -73,7 +73,7 @@
           <Property Name="DeliveryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DeliveryTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="ImgDelivery" Type="nvarchar" MaxLength="50" />
-          <Property Name="DeliveryDetails" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryDetails" Type="nvarchar(max)" />
           <Property Name="DeliveryQuestion" Type="ntext" />
           <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -514,7 +514,6 @@
           <EntitySet Name="Categories" EntityType="MyBagBagModel.Category" />
           <EntitySet Name="Contacts" EntityType="MyBagBagModel.Contact" />
           <EntitySet Name="Customers" EntityType="MyBagBagModel.Customer" />
-          <EntitySet Name="Deliveries" EntityType="MyBagBagModel.Delivery" />
           <EntitySet Name="Employees" EntityType="MyBagBagModel.Employee" />
           <EntitySet Name="ImgNews" EntityType="MyBagBagModel.ImgNew" />
           <EntitySet Name="ImgProducts" EntityType="MyBagBagModel.ImgProduct" />
@@ -546,10 +545,6 @@
           <AssociationSet Name="FK_Order_Customer" Association="MyBagBagModel.FK_Order_Customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Delivery_Employee" Association="MyBagBagModel.FK_Delivery_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Role" Association="MyBagBagModel.FK_Employee_Role">
             <End Role="Role" EntitySet="Roles" />
@@ -586,6 +581,11 @@
           <AssociationSet Name="FK_Products_Supplier" Association="MyBagBagModel.FK_Products_Supplier">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Deliveries" EntityType="MyBagBagModel.Delivery" />
+          <AssociationSet Name="FK_Delivery_Employee" Association="MyBagBagModel.FK_Delivery_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="About">
@@ -654,18 +654,6 @@
           <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
           <NavigationProperty Name="Orders" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
-        <EntityType Name="Delivery">
-          <Key>
-            <PropertyRef Name="DeliveryId" />
-          </Key>
-          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DeliveryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImgDelivery" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="MyBagBagModel.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
-        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeCode" />
@@ -684,9 +672,9 @@
           <Property Name="Status_Emp" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Abouts" Relationship="MyBagBagModel.FK_About_Employee" FromRole="Employee" ToRole="About" />
           <NavigationProperty Name="Branches" Relationship="MyBagBagModel.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
-          <NavigationProperty Name="Deliveries" Relationship="MyBagBagModel.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
           <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="News" Relationship="MyBagBagModel.FK_News_Employee" FromRole="Employee" ToRole="News" />
+          <NavigationProperty Name="Deliveries" Relationship="MyBagBagModel.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
         </EntityType>
         <EntityType Name="ImgNew">
           <Key>
@@ -899,20 +887,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Delivery_Employee">
-          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MyBagBagModel.Delivery" Role="Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employee_Role">
           <End Type="MyBagBagModel.Role" Role="Role" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1037,6 +1011,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImgDelivery" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="MyBagBagModel.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Delivery_Employee">
+          <End Type="MyBagBagModel.Employee" Role="Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.Delivery" Role="Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1106,18 +1106,6 @@
                 <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
                 <ScalarProperty Name="CustomerPass" ColumnName="CustomerPass" />
                 <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Deliveries">
-            <EntityTypeMapping TypeName="MyBagBagModel.Delivery">
-              <MappingFragment StoreEntitySet="Delivery">
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
-                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
-                <ScalarProperty Name="ImgDelivery" ColumnName="ImgDelivery" />
-                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
-                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1268,6 +1256,18 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="MyBagBagModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
+                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
+                <ScalarProperty Name="ImgDelivery" ColumnName="ImgDelivery" />
+                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

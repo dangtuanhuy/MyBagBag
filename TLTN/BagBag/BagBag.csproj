@@ -200,6 +200,7 @@
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\DelieveryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1209,6 +1210,7 @@
     <Folder Include="myImg\Delivery\" />
     <Folder Include="myImg\Emp\" />
     <Folder Include="myImg\News\" />
+    <Folder Include="Views\Delievery\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

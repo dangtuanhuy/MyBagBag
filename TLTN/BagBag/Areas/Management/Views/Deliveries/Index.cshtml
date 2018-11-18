@@ -17,10 +17,10 @@
     <thead>
         <tr class="text-center">
             <th class="col-md-2 text-center"></th>
-            <th class="col-md-2 text-center">
+            <th class="col-md-1 text-center">
                 @Html.DisplayNameFor(model => model.DeliveryTitle)
             </th>
-            <th class="col-md-2 text-center">
+            <th class="col-md-4 text-center">
                 @Html.DisplayNameFor(model => model.DeliveryDetails)
             </th>
             <th class="col-md-2 text-center">
@@ -68,13 +68,7 @@
 
                         </span>
                     </a>
-                    |
-                    <a href="@Url.Action("Details", "Deliveries", new { id = item.DeliveryId})" class="btn btn-primary">
-                        <i class="fa fa-list-alt"></i>
-                        <span>
-
-                        </span>
-                    </a>
+                 
                     |
                     <a href="@Url.Action("Delete", "Deliveries", new { id = item.DeliveryId})" class="btn btn-danger">
                         <i class="fa fa-trash-o"></i>
