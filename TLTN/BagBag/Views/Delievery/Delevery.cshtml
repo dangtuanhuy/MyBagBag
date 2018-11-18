@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BagBag.Models.Delivery>
+@{
+    ViewBag.Title = "Delevery";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<section class="section-paddings">
+    <div class="container">
+        <div class="row">
+            <div class="login">
+                <div class="wrap">
+                    <ul class="breadcrumb breadcrumb__t"><a class="home" href="@Url.Action("Index","Home")">Home</a>  / Delivery</ul>
+                    @foreach (var item in Model)
+                    {
+
+                        <h5 class="m_6">@Html.DisplayFor(modelItem => item.DeliveryTitle)</h5>
+                        <p class="m_text">@Html.DisplayFor(modelItem => item.DeliveryDetails)</p>
+                        <ul class="delivery-list">
+                            
+                            <li><a href="@Url.Action("Index","Home")"> @Html.DisplayFor(modelItem => item.DeliveryQuestion)</a></li>
+                        </ul>
+                        
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

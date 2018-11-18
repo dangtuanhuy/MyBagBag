@@ -199,6 +199,7 @@
     <Compile Include="Areas\Management\Controllers\SuppliersController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DelieveryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -864,6 +865,9 @@
     <Content Include="Content\User\images\down-arrow.png" />
     <Content Include="Content\User\images\f-icon.png" />
     <Content Include="Content\User\images\f-tw.png" />
+    <Content Include="Content\User\images\Hana1.png" />
+    <Content Include="Content\User\images\Hana2.png" />
+    <Content Include="Content\User\images\Hana3.png" />
     <Content Include="Content\User\images\header_arrow.png" />
     <Content Include="Content\User\images\img-sprite.png" />
     <Content Include="Content\User\images\left-banner1.jpg" />
@@ -1181,7 +1185,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
@@ -1202,6 +1205,8 @@
     <Content Include="Views\Cart\Succees.cshtml" />
     <Content Include="Views\TypeBag\Men.cshtml" />
     <Content Include="Views\TypeBag\Women.cshtml" />
+    <Content Include="Views\Delievery\Delevery.cshtml" />
+    <Content Include="Views\About\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1210,7 +1215,6 @@
     <Folder Include="myImg\Delivery\" />
     <Folder Include="myImg\Emp\" />
     <Folder Include="myImg\News\" />
-    <Folder Include="Views\Delievery\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

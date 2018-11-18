@@ -42,6 +42,12 @@ namespace BagBag.Controllers
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    TempData["msg"] = "<script>alert('Username is exist. You can write informtion again');</script>";
+                    ex.ToString();
+                    return RedirectToAction("Register");
+                }
                 return RedirectToAction("Success", "Registers");
             }
 
