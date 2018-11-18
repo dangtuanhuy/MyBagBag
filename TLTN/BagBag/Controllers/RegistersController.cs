@@ -26,7 +26,7 @@ namespace BagBag.Controllers
             {
                 try
                 {
-                    customer.CustomerGender = 1;
+ 
                     customer.RoleId = 3;
                     customer.CustomerPass = Encrypt.MD5_Encode(customer.CustomerPass);
                     db.Customers.Add(customer);
@@ -78,7 +78,7 @@ namespace BagBag.Controllers
                 try
                 {
                     db.Entry(customer).State = EntityState.Modified;
-                    customer.CustomerGender = 1;
+                  
                     customer.RoleId = 3;
                     customer.CustomerPass = Encrypt.MD5_Encode(customer.CustomerPass);
                     db.SaveChanges();

@@ -57,7 +57,7 @@
           <Property Name="CustomerCode" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="CustomerPass" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="CustomerFullName" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="CustomerGender" Type="int" />
+          <Property Name="CustomerGender" Type="bit" />
           <Property Name="ContactCompany" Type="nvarchar" MaxLength="30" />
           <Property Name="CustomerAddress" Type="nvarchar" MaxLength="60" />
           <Property Name="CustomerRegion" Type="nvarchar" MaxLength="15" />
@@ -513,7 +513,6 @@
           <EntitySet Name="Branches" EntityType="MyBagBagModel.Branch" />
           <EntitySet Name="Categories" EntityType="MyBagBagModel.Category" />
           <EntitySet Name="Contacts" EntityType="MyBagBagModel.Contact" />
-          <EntitySet Name="Customers" EntityType="MyBagBagModel.Customer" />
           <EntitySet Name="Employees" EntityType="MyBagBagModel.Employee" />
           <EntitySet Name="ImgNews" EntityType="MyBagBagModel.ImgNew" />
           <EntitySet Name="ImgProducts" EntityType="MyBagBagModel.ImgProduct" />
@@ -537,14 +536,6 @@
           <AssociationSet Name="FK_Products_Category" Association="MyBagBagModel.FK_Products_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Customer_Role" Association="MyBagBagModel.FK_Customer_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Customer" Association="MyBagBagModel.FK_Order_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Role" Association="MyBagBagModel.FK_Employee_Role">
             <End Role="Role" EntitySet="Roles" />
@@ -586,6 +577,15 @@
           <AssociationSet Name="FK_Delivery_Employee" Association="MyBagBagModel.FK_Delivery_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <EntitySet Name="Customers" EntityType="MyBagBagModel.Customer" />
+          <AssociationSet Name="FK_Customer_Role" Association="MyBagBagModel.FK_Customer_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="MyBagBagModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="About">
@@ -635,24 +635,6 @@
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Create_Contact" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="CustomerCode" />
-          </Key>
-          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerPass" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerFullName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerGender" Type="Int32" />
-          <Property Name="ContactCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerRegion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerPostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerPhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerFax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
-          <NavigationProperty Name="Orders" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -721,9 +703,9 @@
           <Property Name="OrderPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PaymentMethod" Type="Int32" />
           <Property Name="Order_Status" Type="Boolean" />
-          <NavigationProperty Name="Customer" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="PaymentMethod1" Relationship="MyBagBagModel.FK_Order_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
           <NavigationProperty Name="OrderDetails" Relationship="MyBagBagModel.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="Customer" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -788,8 +770,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="RoleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customers" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Role" ToRole="Customer" />
           <NavigationProperty Name="Employees" Relationship="MyBagBagModel.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Customers" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Role" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -856,34 +838,6 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Customer_Role">
-          <End Type="MyBagBagModel.Role" Role="Role" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MyBagBagModel.Customer" Role="Customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Customer">
-          <End Type="MyBagBagModel.Customer" Role="Customer" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MyBagBagModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerCode" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="CustomerCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1037,6 +991,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPass" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerFullName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerGender" Type="Boolean" />
+          <Property Name="ContactCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerRegion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerFax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="MyBagBagModel.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
+          <NavigationProperty Name="Orders" Relationship="MyBagBagModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Customer_Role">
+          <End Type="MyBagBagModel.Role" Role="Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="MyBagBagModel.Customer" Role="Customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyBagBagModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerCode" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1089,23 +1089,6 @@
                 <ScalarProperty Name="ContactName" ColumnName="ContactName" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="MyBagBagModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
-                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
-                <ScalarProperty Name="CustomerPostalCode" ColumnName="CustomerPostalCode" />
-                <ScalarProperty Name="CustomerRegion" ColumnName="CustomerRegion" />
-                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
-                <ScalarProperty Name="ContactCompany" ColumnName="ContactCompany" />
-                <ScalarProperty Name="CustomerGender" ColumnName="CustomerGender" />
-                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
-                <ScalarProperty Name="CustomerPass" ColumnName="CustomerPass" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1268,6 +1251,23 @@
                 <ScalarProperty Name="ImgDelivery" ColumnName="ImgDelivery" />
                 <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
                 <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MyBagBagModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerPostalCode" ColumnName="CustomerPostalCode" />
+                <ScalarProperty Name="CustomerRegion" ColumnName="CustomerRegion" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="ContactCompany" ColumnName="ContactCompany" />
+                <ScalarProperty Name="CustomerGender" ColumnName="CustomerGender" />
+                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+                <ScalarProperty Name="CustomerPass" ColumnName="CustomerPass" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

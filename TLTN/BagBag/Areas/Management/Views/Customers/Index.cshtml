@@ -46,14 +46,24 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerFullName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerGender)
-                </td>
+                @if (item.CustomerGender == true)
+                {
+                    <td class="text-center">
+                        Male
+                    </td>
+                }
+                else
+                {
+                    <td class="text-center">
+                        Female
+                    </td>
+                }
+
                 <td>
                     @Html.DisplayFor(modelItem => item.ContactCompany)
                 </td>
                 <td>
-                     @Html.DisplayFor(modelItem => item.CustomerAddress)
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerRegion)

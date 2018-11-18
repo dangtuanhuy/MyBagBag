@@ -29,9 +29,9 @@ namespace BagBag.Models
         public Nullable<int> PaymentMethod { get; set; }
         public Nullable<bool> Order_Status { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual PaymentMethod PaymentMethod1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
