@@ -201,6 +201,7 @@
     <Compile Include="Areas\Management\Models\LoginViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryBagController.cs" />
     <Compile Include="Controllers\DelieveryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
@@ -1211,6 +1212,10 @@
     <Content Include="Views\TypeBag\Women.cshtml" />
     <Content Include="Views\Delievery\Delevery.cshtml" />
     <Content Include="Views\About\About.cshtml" />
+    <Content Include="Views\CategoryBag\Withdraw.cshtml" />
+    <Content Include="Views\CategoryBag\Backpack.cshtml" />
+    <Content Include="Views\CategoryBag\Traditional.cshtml" />
+    <Content Include="Views\CategoryBag\Workplace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

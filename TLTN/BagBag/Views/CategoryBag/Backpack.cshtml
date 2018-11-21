@@ -1,0 +1,74 @@
+﻿@using BagBag.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Product>
+@{
+    ViewBag.Title = "Backpack";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<section class="section-paddings">
+    <div class="container">
+
+        <h2 style="text-align:center; color:deepskyblue;">Backpack</h2>
+        @using (Html.BeginForm())
+        {
+
+            <div class="form-group row">
+                <div class="col-md-9">
+
+                </div>
+                <div class="col-md-3">Find by Name or by Style:</div>
+                <div class="col-md-9">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        @Html.TextBox("SearchString", null, new { @class = "form-control", data_toggle = "tooltip" })
+                        <span class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                            <input type="submit" value="Search" />
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+        }
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 prod">
+                <a href="@Url.Action("ProductDetails","Product", new { id = item.ProductId })">
+                    <div class="inner_content clearfix">
+                        <div class="product_image">
+                            <img src="~/myImg/BagBag/@item.ImgProducts.FirstOrDefault().Img_Product" alt="" />
+                        </div>
+                     
+                        <div class="price">
+                            <div class="cart-left">
+                                <p class="title">@item.ProductName</p>
+                                <div class="price1">
+                                    <span class="">@item.ProductSold</span>
+
+                                </div>
+                            </div>
+                            <div class="cart-right"> </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</section>
+<div class="content-pagenation text-center">
+    @Html.PagedListPager(Model, page => Url.Action("Backpack",
+     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+
+
+
+
+
