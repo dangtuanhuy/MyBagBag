@@ -31,13 +31,31 @@
                 </div>
                 <div class="desc1 span_3_of_2">
                     <h3 class="m_3">@Model.ProductName</h3>
-                    <p class="m_5">@string.Format("{0:#,##0 $}", @Model.ProductSold)</p>
+                      @if (Model.PromotionId == null)
+                            {
+                                <h5 class="item_price">@string.Format("{0:#,##0 $}", @Model.ProductSold)</h5>
+                            }
+                            else
+                            {
+                                var motion = Model.Promotion.PromotionDiscount;
+                                if (motion == 0 || motion == null)
+                                {
+                                    <h5 class="item_price">@string.Format("{0:#,##0 $}", Model.ProductSold)</h5>
+                                }
+                                else
+                                {
+                                    var sold = Model.ProductSold;
+                                    var its = sold - (sold * motion) / 100;
+                                    <h5 class="item_price">@string.Format("{0:#,##0 $}", its)</h5>
+                                }
+                            }
+                    @*<p class="item_price">@string.Format("{0:#,##0 $}", @Model.ProductSold)</p>*@
                     <div class="btn_form">
                         <a href="@Url.Action("ThemGioHang", "Cart", new { @ProductId = Model.ProductId, strUrl = Request.Url.ToString()})" class="add-cart item_add">[ADD TO CART]</a>
                         |<a class="add-cart item_add" href="@Url.Action("Index", "Home")">[Continue shopping]</a>
                         <br />
                         <br />
-                        <a href="@Model.LinkPay"><img src="https://www.baokim.vn/cdn/x_developer/module/baokim_btn/paynow-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
+                        <a href="@Model.LinkPay"><img src="https://www.baokim.vn/cdn/x_developer/module/baokim_btn/paynow-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0"></a>
                         
                     </div>
                     <span class="m_link">Details </span>
@@ -64,7 +82,7 @@
                 </select>
                 <ul class="kids">
                     <li><a href="#">Kids</a></li>
-                    <li class="last"><a href="#">Glasses Shop</a></li>
+                 
                 </ul>
                 <section class="sky-form">
                     <h4>SUPPLIERS</h4>

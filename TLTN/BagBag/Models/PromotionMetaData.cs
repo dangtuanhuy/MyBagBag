@@ -32,14 +32,14 @@ namespace BagBag.Models
 
             [Display(Name = "Start")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [DataType(DataType.DateTime, ErrorMessage = "Input Data is not valid")]
+            [DataType(DataType.Date, ErrorMessage = "Input Data is not valid")]
             [Required(ErrorMessage = "Can not null")]
             public Nullable<System.DateTime> PromotionOpen { get; set; }
 
             [Display(Name = "End")]
           
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            [DataType(DataType.DateTime, ErrorMessage = "Input Data is not valid")]
+            [DataType(DataType.Date, ErrorMessage = "Input Data is not valid")]
             [Required(ErrorMessage = "Can not null")]
             public Nullable<System.DateTime> PromotionClose { get; set; }
         }

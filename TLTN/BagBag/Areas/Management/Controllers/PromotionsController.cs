@@ -49,12 +49,29 @@ namespace BagBag.Areas.Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PromotionId,PromotionName,PromotionDetails,PromotionDiscount,PromotionStatus,PromotionOpen,PromotionClose")] Promotion promotion)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Can not add DB");
+                return View();
+            }
+            if (!String.IsNullOrEmpty(promotion.PromotionName))
             {
                 try
                 {
-                    db.Promotions.Add(promotion);
-                    db.SaveChanges();
+                    DateTime dt1 = DateTime.Parse(promotion.PromotionOpen.ToString());
+                    DateTime dt2 = DateTime.Parse(promotion.PromotionClose.ToString());
+                    if (dt1.Date > dt2.Date)
+                    {
+                        ModelState.AddModelError("", "End time must be greater than start time");
+
+                    }
+                    else
+                    {
+
+                        db.Promotions.Add(promotion);
+                        db.SaveChanges();
+
+                    }
                 }
                 catch (DbEntityValidationException dbEx)
                 {
@@ -66,9 +83,10 @@ namespace BagBag.Areas.Management.Controllers
                         }
                     }
                 }
-                return RedirectToAction("Index");
-            }
 
+                return RedirectToAction("Index");
+
+            }
             return View(promotion);
         }
 

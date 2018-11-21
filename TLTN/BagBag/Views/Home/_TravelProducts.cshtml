@@ -2,25 +2,59 @@
 @model IQueryable<Product>
 @foreach (var item in Model)
 {
-<div class="col_1_of_3 span_1_of_3">
-    <a href="@Url.Action("ProductDetails","Product", new { id = item.ProductId })">
-        <div class="inner_content clearfix">
-            <div class="product_image">
-                <img src="~/myImg/BagBag/@item.ImgProducts.FirstOrDefault().Img_Product" alt="" />
-            </div>
-            <div class="sale-box1"><span class="on_sale title_shop">Sale</span></div>
-            <div class="price">
-                <div class="cart-left">
-                    <p class="title">@item.ProductName</p>
-                    <div class="price1">
-                        <span class="actual">@item.ProductSold</span>
-                 
-                    </div>
+    <div class="col_1_of_3 span_1_of_3">
+        <a href="@Url.Action("ProductDetails","Product", new { id = item.ProductId })">
+            <div class="inner_content clearfix">
+                <div class="product_image">
+                    <img src="~/myImg/BagBag/@item.ImgProducts.FirstOrDefault().Img_Product" alt="" />
                 </div>
-                <div class="cart-right"> </div>
-                <div class="clear"></div>
+                <div class="sale-box1"><span class="on_sale title_shop">Sale</span></div>
+                <div class="price">
+                    <div class="cart-left">
+                        <p class="title">@item.ProductName</p>
+                        <div class="price1">
+                            <span class="actual">@item.ProductSold</span>
+                            @if (item.PromotionId == null)
+                            {
+                                <h5 class="item_price">@string.Format("{0:#,##0 }", item.ProductSold)</h5>
+                            }
+                            else
+                            {
+                                var motion = item.Promotion.PromotionDiscount;
+                                if (motion == 0 || motion == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    var its = item.ProductSold - (item.ProductSold * item.Promotion.PromotionDiscount) / 100;
+                                    <h4><a class="" href="#"><i></i></a> <span class="item_price">@string.Format("{0:#,##0 }", its)</span></h4>
+                                }
+                            }
+                        </div>
+                        @if (item.PromotionId == null)
+                        {
+                        }
+                        else
+                        {
+                            var motion = item.Promotion.PromotionDiscount;
+                            if (motion == 0 || motion == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <div class="srch">
+                                    <span>@item.Promotion.PromotionDiscount%</span>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="cart-right"> </div>
+                    <div class="clear"></div>
+                </div>
             </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </div>
 }
+@*<a class="" href="#"><i></i></a>*@

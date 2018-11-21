@@ -7,7 +7,7 @@
 
 <h2 class=" text-center">Create Promotion</h2>
 <div><a href="@Url.Action("Index","Promotions")" class="btn btn-info">Manage</a></div>
-
+@Html.Raw(TempData["msg2"])
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -77,7 +77,7 @@
     </div>
 }
 
-@section Scripts
+@*@section Scripts
 {
     <script>
         $(function () {
@@ -89,4 +89,4 @@
             $("#datepicker1").datepicker();
         });
     </script>
-}
+}*@

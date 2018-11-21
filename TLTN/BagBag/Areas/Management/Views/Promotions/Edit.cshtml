@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PromotionOpen, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PromotionOpen, new { htmlAttributes = new { @id = "datepicker", @class = "form-control" } })
+                @Html.TextBoxFor(model => model.PromotionOpen, new { htmlAttributes = new { @id = "datepicker", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PromotionOpen, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PromotionClose, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PromotionClose, new { htmlAttributes = new { @id = "datepicker1", @class = "form-control" } })
+                @Html.TextBoxFor(model => model.PromotionClose, new { htmlAttributes = new { @id = "datepicker1", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PromotionClose, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -80,7 +80,7 @@
     </div>
 }
 
-@section Scripts
+@*@section Scripts
 {
     <script>
         $(function () {
@@ -92,4 +92,4 @@
             $("#datepicker1").datepicker();
         });
     </script>
-}
+}*@

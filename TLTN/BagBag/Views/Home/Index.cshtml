@@ -1,8 +1,10 @@
 ﻿@using BagBag.Models
 @model IQueryable<Product>
 @{
-    ViewBag.Title = "Home Page";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+                /**/
+
+                ViewBag.Title = "Home Page";
+                Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 @{
     IQueryable<Product> listProducts1 = ViewBag.ListProduct1 as IQueryable<Product>;
@@ -61,7 +63,7 @@
                 <div class="top-box">
                     @Html.Partial("~/Views/Home/_CrosspocketProducts.cshtml", listProducts4)
 
-                    
+
                     <div class="clear"></div>
                 </div>
                 <div class="top-box1">
@@ -108,15 +110,15 @@
                 </div>
                 <div class="top-border"> </div>
                 @*<div class="sidebar-bottom">
-                    <h2 class="m_1">Newsletters<br> Signup</h2>
-                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer</p>
-                    <div class="subscribe">
-                        <form>
-                            <input name="userName" type="text" class="textbox">
-                            <input type="submit" value="Subscribe">
-                        </form>
-                    </div>
-                </div>*@
+                        <h2 class="m_1">Newsletters<br> Signup</h2>
+                        <p class="m_text">Lorem ipsum dolor sit amet, consectetuer</p>
+                        <div class="subscribe">
+                            <form>
+                                <input name="userName" type="text" class="textbox">
+                                <input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+                    </div>*@
             </div>
             <div class="clear"></div>
         </div>
