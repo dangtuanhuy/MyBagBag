@@ -31,6 +31,7 @@ namespace BagBag.Models
             public Nullable<System.DateTime> ProductUpdate { get; set; }
 
             [Display(Name ="Qty")]
+            [RegularExpression("^[0-9]*$", ErrorMessage = "Qty is positive numbers")]
             [Required(ErrorMessage = "Can not null")]
             public Nullable<int> ProductQty { get; set; }
 

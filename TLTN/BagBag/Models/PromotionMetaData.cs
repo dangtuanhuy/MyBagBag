@@ -24,6 +24,8 @@ namespace BagBag.Models
 
             [Display(Name = "Discount")]
             [Required(ErrorMessage = "Can not null")]
+            [RegularExpression("^[1-9]*$", ErrorMessage = "Qty is positive numbers")]
+            [Range(1, 99,ErrorMessage ="Limit 1-99")]
             public Nullable<int> PromotionDiscount { get; set; }
 
             [Display(Name ="Status")]
