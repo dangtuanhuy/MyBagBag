@@ -39,6 +39,11 @@ namespace BagBag.Models
             [DataType(DataType.Currency,ErrorMessage = "Input Data is not valid")]
             public Nullable<decimal> ProductSold { get; set; }
 
+            [Display(Name = "Link")]
+       
+            [DataType(DataType.MultilineText)]
+            public string LinkPay { get; set; }
+
         }
     }
 }

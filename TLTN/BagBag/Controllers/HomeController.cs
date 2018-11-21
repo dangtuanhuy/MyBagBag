@@ -14,11 +14,11 @@ namespace BagBag.Controllers
         public ActionResult Index()
         {
 
-            var listProducts1 = (from p in db.Products where p.Category.CategoryName == "Military backpack" orderby p.ProductUpdate select p).Take(3);
+            var listProducts1 = (from p in db.Products where p.Category.CategoryName == "Military backpack" orderby p.ProductUpdate select p);
             ViewBag.ListProduct1 = listProducts1;
 
             //Danh Sách Balo Laptop
-            var listProducts2 = (from p in db.Products where p.Category.CategoryName == "Backpack LapTop" orderby p.ProductName select p).Take(3);
+            var listProducts2 = (from p in db.Products where p.Category.CategoryName == "Backpack LapTop" orderby p.ProductName select p);
             ViewBag.ListProduct2 = listProducts2;
 
             //Danh sách Balo Tiện Ích
@@ -26,12 +26,12 @@ namespace BagBag.Controllers
             ViewBag.ListProduct3 = listProducts3;
 
             //Danh sách túi đeo chéo
-            var listProducts4 = (from p in db.Products where p.Category.CategoryName == "Bag Withdrawn" orderby p.ProductQty select p).Take(3);
+            var listProducts4 = (from p in db.Products where p.Category.CategoryName == "Bag Withdrawn" orderby p.ProductQty select p);
             ViewBag.ListProduct4 = listProducts4;
 
             //Danh sách balo du lịch
 
-            var listProducts5 = (from p in db.Products where p.CategoryId == 8 orderby p.ProductName select p).Take(3);
+            var listProducts5 = (from p in db.Products where p.CategoryId == 8 orderby p.ProductName select p);
             ViewBag.ListProduct5 = listProducts5;
 
             return View();
