@@ -2,10 +2,9 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<Product>
 @{
-    ViewBag.Title = "Backpack";
+    ViewBag.Title = "Luna";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
 
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
@@ -20,7 +19,7 @@
                 <div class="col-md-9">
 
                 </div>
-                <div class="col-md-3">Find by Name or by Category:</div>
+                <div class="col-md-3">Find by Name or by Supplier:</div>
                 <div class="col-md-9">
                 </div>
                 <div class="col-md-3">
@@ -44,7 +43,7 @@
                         <div class="product_image">
                             <img src="~/myImg/BagBag/@item.ImgProducts.FirstOrDefault().Img_Product" alt="" />
                         </div>
-                     
+
                         <div class="price">
                             <div class="cart-left">
                                 <p class="title">@item.ProductName</p>
@@ -64,11 +63,7 @@
 
 </section>
 <div class="content-pagenation text-center">
-    @Html.PagedListPager(Model, page => Url.Action("Backpack",
+    @Html.PagedListPager(Model, page => Url.Action("Luna",
      new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
-
-
-
-
 

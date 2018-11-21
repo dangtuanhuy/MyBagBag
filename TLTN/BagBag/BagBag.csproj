@@ -207,6 +207,7 @@
     <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\SupplierBagController.cs" />
     <Compile Include="Controllers\TypeBagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1216,6 +1217,11 @@
     <Content Include="Views\CategoryBag\Backpack.cshtml" />
     <Content Include="Views\CategoryBag\Traditional.cshtml" />
     <Content Include="Views\CategoryBag\Workplace.cshtml" />
+    <Content Include="Views\SupplierBag\Aru.cshtml" />
+    <Content Include="Views\SupplierBag\BenTre.cshtml" />
+    <Content Include="Views\SupplierBag\Luna.cshtml" />
+    <Content Include="Views\SupplierBag\Hara.cshtml" />
+    <Content Include="Views\SupplierBag\Coco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

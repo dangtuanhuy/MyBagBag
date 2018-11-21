@@ -31,24 +31,24 @@
                 </div>
                 <div class="desc1 span_3_of_2">
                     <h3 class="m_3">@Model.ProductName</h3>
-                      @if (Model.PromotionId == null)
-                            {
-                                <h5 class="item_price">@string.Format("{0:#,##0 $}", @Model.ProductSold)</h5>
-                            }
-                            else
-                            {
-                                var motion = Model.Promotion.PromotionDiscount;
-                                if (motion == 0 || motion == null)
-                                {
-                                    <h5 class="item_price">@string.Format("{0:#,##0 $}", Model.ProductSold)</h5>
-                                }
-                                else
-                                {
-                                    var sold = Model.ProductSold;
-                                    var its = sold - (sold * motion) / 100;
-                                    <h5 class="item_price">@string.Format("{0:#,##0 $}", its)</h5>
-                                }
-                            }
+                    @if (Model.PromotionId == null)
+                    {
+                        <h5 class="item_price">@string.Format("{0:#,##0 $}", @Model.ProductSold)</h5>
+                    }
+                    else
+                    {
+                        var motion = Model.Promotion.PromotionDiscount;
+                        if (motion == 0 || motion == null)
+                        {
+                            <h5 class="item_price">@string.Format("{0:#,##0 $}", Model.ProductSold)</h5>
+                        }
+                        else
+                        {
+                            var sold = Model.ProductSold;
+                            var its = sold - (sold * motion) / 100;
+                            <h5 class="item_price">@string.Format("{0:#,##0 $}", its)</h5>
+                        }
+                    }
                     @*<p class="item_price">@string.Format("{0:#,##0 $}", @Model.ProductSold)</p>*@
                     <div class="btn_form">
                         <a href="@Url.Action("ThemGioHang", "Cart", new { @ProductId = Model.ProductId, strUrl = Request.Url.ToString()})" class="add-cart item_add">[ADD TO CART]</a>
@@ -56,33 +56,33 @@
                         <br />
                         <br />
                         <a href="@Model.LinkPay"><img src="https://www.baokim.vn/cdn/x_developer/module/baokim_btn/paynow-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0"></a>
-                        
+
                     </div>
                     <span class="m_link">Details </span>
                     <p class="m_text2">@Model.ProductDetails </p>
                 </div>
                 <div class="clear"></div>
-              
-          
-            
+
+
+
             </div>
             <div class="rsingle span_1_of_single">
                 <h5 class="m_1">Categories</h5>
-                <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-                    <option value="1">Mens</option>
-                    <option value="2">Sub Category1</option>
-                    <option value="3">Sub Category2</option>
-                    <option value="4">Sub Category3</option>
-                </select>
-                <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-                    <option value="1">Womens</option>
-                    <option value="2">Sub Category1</option>
-                    <option value="3">Sub Category2</option>
-                    <option value="4">Sub Category3</option>
-                </select>
                 <ul class="kids">
-                    <li><a href="#">Kids</a></li>
-                 
+                    <li><a href="@Url.Action("Workplace","CategoryBag")">Workplace</a></li>
+
+                </ul>
+                <ul class="kids">
+                    <li><a href="@Url.Action("Traditional","CategoryBag")">Traditional</a></li>
+
+                </ul>
+                <ul class="kids">
+                    <li><a href="@Url.Action("Withdraw","CategoryBag")">Withdraw</a></li>
+
+                </ul>
+                <ul class="kids">
+                    <li><a href="@Url.Action("Backpack","CategoryBag")">Backpack</a></li>
+
                 </ul>
                 <section class="sky-form">
                     <h4>SUPPLIERS</h4>
@@ -134,10 +134,10 @@
                         </div>
                     </div>
                 </section>
-             
-              
-             
-               
+
+
+
+
                 <script src="~/Content/User/js/jquery.easydropdown.js"></script>
 
             </div>
