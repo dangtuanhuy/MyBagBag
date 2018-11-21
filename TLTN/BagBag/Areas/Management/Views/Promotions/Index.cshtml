@@ -25,9 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.PromotionDiscount)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.PromotionStatus)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.PromotionOpen)
             </th>
@@ -50,7 +50,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PromotionDiscount)
                 </td>
-                @if (item.PromotionStatus == true)
+                @*@if (item.PromotionStatus == true)
                 {
                     <td class="text-center">
                         Open
@@ -61,7 +61,7 @@
                     <td class="text-center">
                         Close
                     </td>
-                }
+                }*@
                 <td>
                     @Html.DisplayFor(modelItem => item.PromotionOpen)
                 </td>

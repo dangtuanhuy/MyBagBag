@@ -67,7 +67,7 @@ namespace BagBag.Areas.Management.Controllers
                     }
                     else
                     {
-
+                        promotion.PromotionStatus = true;
                         db.Promotions.Add(promotion);
                         db.SaveChanges();
 
@@ -117,6 +117,7 @@ namespace BagBag.Areas.Management.Controllers
                 try
                 {
                     db.Entry(promotion).State = EntityState.Modified;
+                    promotion.PromotionStatus = true;
                     db.SaveChanges();
                 }
                 catch (DbEntityValidationException dbEx)
