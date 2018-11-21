@@ -37,7 +37,7 @@ namespace BagBag.Controllers
                 lstTouris = lstTouris.Where(s => s.ProductName.Contains(searchString)
                                        || s.Supplier.CompanyName.Contains(searchString) || s.Supplier.ContactName.Contains(searchString));
             }
-            int PageSize = 4;
+            int PageSize = 8;
             int PageNumber = (page ?? 1);
             return View(lstTouris.OrderBy(n => n.Create_Product).ToPagedList(PageNumber, PageSize));
         }
@@ -62,7 +62,7 @@ namespace BagBag.Controllers
                 lstTouris = lstTouris.Where(s => s.ProductName.Contains(searchString)
                                        || s.Supplier.CompanyName.Contains(searchString) || s.Supplier.ContactName.Contains(searchString));
             }
-            int PageSize = 4;
+            int PageSize = 8;
             int PageNumber = (page ?? 1);
             return View(lstTouris.OrderBy(n => n.Create_Product).ToPagedList(PageNumber, PageSize));
         }
@@ -87,7 +87,7 @@ namespace BagBag.Controllers
                 lstTouris = lstTouris.Where(s => s.ProductName.Contains(searchString)
                                        || s.Supplier.CompanyName.Contains(searchString) || s.Supplier.ContactName.Contains(searchString));
             }
-            int PageSize = 4;
+            int PageSize = 8;
             int PageNumber = (page ?? 1);
             return View(lstTouris.OrderBy(n => n.Create_Product).ToPagedList(PageNumber, PageSize));
         }
@@ -112,7 +112,7 @@ namespace BagBag.Controllers
                 lstTouris = lstTouris.Where(s => s.ProductName.Contains(searchString)
                                        || s.Supplier.CompanyName.Contains(searchString) || s.Supplier.ContactName.Contains(searchString));
             }
-            int PageSize = 4;
+            int PageSize = 8;
             int PageNumber = (page ?? 1);
             return View(lstTouris.OrderBy(n => n.Create_Product).ToPagedList(PageNumber, PageSize));
         }
