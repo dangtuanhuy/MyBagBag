@@ -17,6 +17,7 @@ namespace BagBag.Models
         public Decimal Total { get; set; }
         public Nullable<int> PaymentMethod { get; set; }
         public int ProductQty { get; set; }
+        public int PromotionId { get; set; }
         public CartItem(int ProductId)
         {
             using (MyBagBagEntities db = new MyBagBagEntities())
@@ -25,10 +26,28 @@ namespace BagBag.Models
                 this.ProductId = ProductId;
                 this.ProductQtyUser = 1;
                 this.ProductName = pro.ProductName;
-                this.ProductSold = pro.ProductSold.Value;
-                this.Total = pro.ProductSold.Value * this.ProductQtyUser;
                 this.ImgPro = pro.ImgProducts.ToList();
                 this.ProductQty = pro.ProductQty.Value;
+                if (pro.PromotionId == null)
+                {
+                    this.ProductSold = pro.ProductSold.Value;
+                }
+                else
+                {
+                    Promotion promotion = db.Promotions.SingleOrDefault(x => x.PromotionId == pro.PromotionId);
+                    if (promotion.PromotionDiscount == 0 || promotion.PromotionDiscount == null)
+                    {
+                        this.ProductSold = pro.ProductSold.Value;
+                    }
+                    else
+                    {
+                        this.ProductSold = pro.ProductSold.Value - ((pro.ProductSold.Value * pro.Promotion.PromotionDiscount.Value) / 100);
+                    }
+                }
+                this.Total = pro.ProductSold.Value * this.ProductQtyUser;
+
+
+
             }
         }
     }
