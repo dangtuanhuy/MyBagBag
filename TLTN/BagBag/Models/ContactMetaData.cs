@@ -36,6 +36,8 @@ namespace BagBag.Models
             public string PostalCode { get; set; }
 
             [Display(Name = "Phone")]
+            [DataType(DataType.PhoneNumber)]
+            [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
             [Required(ErrorMessage = "Can not null")]
             public string Phone { get; set; }
 

@@ -41,7 +41,6 @@ namespace BagBag.Models
             public Nullable<decimal> ProductSold { get; set; }
 
             [Display(Name = "Link")]
-       
             [DataType(DataType.MultilineText)]
             public string LinkPay { get; set; }
 
