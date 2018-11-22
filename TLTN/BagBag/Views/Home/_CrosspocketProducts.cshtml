@@ -12,10 +12,27 @@
                     <div class="cart-left">
                         <p class="title">@item.ProductName</p>
                         <div class="price1">
-                            <span class="actual">@item.ProductSold</span>
+                            <span class="actual">@string.Format("{0:#,##0 }", item.ProductSold)</span>
                             @if (item.PromotionId == null)
                             {
-                                
+                            }
+                            else
+                            {
+                                var motion = item.Promotion.PromotionDiscount;
+                                if (motion == 0 || motion == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    <div class="srch">
+                                        <span>Discount: @item.Promotion.PromotionDiscount%</span>
+                                    </div>
+                                }
+                            }
+                            @if (item.PromotionId == null)
+                            {
+
                             }
                             else
                             {
@@ -27,27 +44,11 @@
                                 else
                                 {
                                     var its = item.ProductSold - (item.ProductSold * item.Promotion.PromotionDiscount) / 100;
-                                    <h4><a class="" href="#"><i></i></a> <span class="item_price">@string.Format("{0:#,##0 }", its)</span></h4>
+                                    <h4><a class="" href="#"><i></i></a> <span class="item_price">Still:@string.Format("{0:#,##0 }", its)</span></h4>
                                 }
                             }
                         </div>
-                        @if (item.PromotionId == null)
-                        {
-                        }
-                        else
-                        {
-                            var motion = item.Promotion.PromotionDiscount;
-                            if (motion == 0 || motion == null)
-                            {
-
-                            }
-                            else
-                            {
-                                <div class="srch">
-                                    <span>Discount: @item.Promotion.PromotionDiscount%</span>
-                                </div>
-                            }
-                        }
+                        
                     </div>
                     <div class="cart-right"> </div>
                     <div class="clear"></div>

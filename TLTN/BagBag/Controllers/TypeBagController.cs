@@ -46,7 +46,7 @@ namespace BagBag.Controllers
                 lstTouris = lstTouris.Where(s => s.ProductName.Contains(searchString)
                                        || s.Category.CategoryName.Contains(searchString));
             }
-            int PageSize = 8;
+            int PageSize = 9;
             int PageNumber = (page ?? 1);
             return View(lstTouris.OrderBy(n => n.Create_Product).ToPagedList(PageNumber, PageSize));
         }
