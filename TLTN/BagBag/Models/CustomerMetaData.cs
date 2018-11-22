@@ -43,6 +43,8 @@ namespace BagBag.Models
 
             [Display(Name = "Phone")]
             [Required(ErrorMessage = "Can not null")]
+            [DataType(DataType.PhoneNumber)]
+            [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid Phone number")]
             public string CustomerPhone { get; set; }
 
             [Display(Name = "Fax")]

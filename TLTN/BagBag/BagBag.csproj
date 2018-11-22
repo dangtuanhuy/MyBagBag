@@ -1167,6 +1167,7 @@
     <Content Include="Areas\Management\Views\Orders\Index.cshtml" />
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="Areas\Management\Views\Shared\_PrintForm.cshtml" />
+    <Content Include="Areas\Management\Views\Page\_sumPrice.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

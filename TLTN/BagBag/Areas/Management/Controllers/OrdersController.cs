@@ -138,6 +138,7 @@ namespace BagBag.Areas.Management.Controllers
             return report;
 
         }
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

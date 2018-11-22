@@ -11,6 +11,10 @@ namespace BagBag.Models
     {
         internal sealed class OrderMetaData
         {
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            public Nullable<System.DateTime> OrderDate { get; set; }
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            public Nullable<System.DateTime> RequiredDate { get; set; }
             [Required(ErrorMessage ="Address can not null")]
             public string OrderAddress { get; set; }
             [Required(ErrorMessage = "Phone can not null")]

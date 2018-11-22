@@ -41,6 +41,12 @@ namespace BagBag.Areas.Management.Controllers
             ViewBag.countCarts = countCarts;
             return PartialView();
         }
+        public ActionResult _sumPrice()
+        {
+            var sumPrice = (from p in db.OrderDetails select p.SoldPrice).Sum();
+            ViewBag.sumPrice = sumPrice;
+            return PartialView();
+        }
         public ActionResult _FooterPage()
         {
             return PartialView("_FooterPage");
